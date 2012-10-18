@@ -34,13 +34,5 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'capybara'
-  gem "capybara-webkit"
   gem 'factory_girl_rails'
-  gem 'pickle'
-  gem 'launchy'
-
-  gem 'cucumber-rails'
-  gem 'webmock', require: false
-  gem 'mocha', '0.11.4'
 end
