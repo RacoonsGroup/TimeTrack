@@ -7,7 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<div id="user_nav">
+		<%= render 'shared/login' %>
+  	<%= render 'devise/shared/login_items' %>
+  	<%= render 'devise/shared/registration_items' %>
+	</div>
 <%= yield %>
 
 </body>
