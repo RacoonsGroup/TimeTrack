@@ -22,5 +22,25 @@ group :assets do
 end
 
 group :development do
-  gem 'debugger'
+  gem 'rails_best_practices'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'ruby-debug19'
+  gem 'shoulda-matchers'
+  gem 'autotest-rails'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem "capybara-webkit"
+  gem 'factory_girl_rails'
+  gem 'pickle'
+  gem 'launchy'
+
+  gem 'cucumber-rails'
+  gem 'webmock', require: false
+  gem 'mocha', '0.11.4'
 end
