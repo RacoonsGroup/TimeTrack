@@ -1,0 +1,13 @@
+doctype
+html
+  head
+    title TimeTrack
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    #user_nav
+      = render 'shared/login'
+      = render 'devise/shared/login_items'
+      = render 'devise/shared/registration_items'
+    = yield
