@@ -19,4 +19,5 @@ end
 
 group :development do
   gem 'debugger'
+  gem 'heroku'
 end

@@ -20,3 +20,4 @@ doc/
 config/database.yml
 
 db/test.sqlite3
+log/*
