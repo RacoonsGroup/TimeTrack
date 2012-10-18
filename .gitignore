@@ -16,3 +16,7 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+config/database.yml
+
+db/test.sqlite3
