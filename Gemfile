@@ -9,7 +9,7 @@ gem "slim-rails"
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
 gem 'simple_form'
-
+gem 'cancan'
 gem "devise"
 
 group :assets do
