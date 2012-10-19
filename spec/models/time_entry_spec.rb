@@ -9,7 +9,6 @@ describe TimeEntry do
 	it { should validate_presence_of(:project) }
 	it { should validate_presence_of(:real_time) }
 	it { should validate_presence_of(:status) }
-	it { should validate_presence_of(:time_points) }
 
 	it { should ensure_length_of(:name).is_at_most(255) }
 	it { should ensure_length_of(:project).is_at_most(100) }
