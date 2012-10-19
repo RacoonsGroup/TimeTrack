@@ -18,5 +18,5 @@ Feature: Listing TimeEntries
     And I am signed in as user with email "fox@example.com"
     And a time_entry exist with user: user "racoon", name: "first_task"
     When I go to the time entries page
-    Then I shouldn't see "first_task"
+    Then I should not see "first_task"
 
