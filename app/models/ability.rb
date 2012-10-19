@@ -8,7 +8,7 @@ class Ability
       else
         can :read, :all
         can :create, :time_entry
-        can :can :manage, TimeEntry, user_id: @user.id
+        can :manage, TimeEntry, user_id: @user.id
       end
   end
 end
