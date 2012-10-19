@@ -2,7 +2,7 @@ class Task < ActiveRecord::Base
   belongs_to :user
   attr_accessible :description, :name, :project, :real_time, :status, :time_points
 
-	STATUS_FINISHED=['finished','processing']
+	STATUS_FINISHED = %w(finished processing)
 
 
   validates :name, :user_id, :project, :real_time, :time_points, :status, presence: true
