@@ -11,7 +11,7 @@
 # For FactoryGirl add: features/support/factory_girl.rb
 #
 require 'factory_girl'
-require File.dirname(__FILE__) + '/../../spec/factories' # or wherever your factories are
+# require File.dirname(__FILE__) + '/../../spec/factories' # or wherever your factories are
 #
 # For Fabrication, just include it in the adapter list when configuring pickle as explained below.
 #
