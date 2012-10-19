@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018133407) do
+ActiveRecord::Schema.define(:version => 20121019133538) do
 
-  create_table "tasks", :force => true do |t|
+  create_table "time_entries", :force => true do |t|
     t.integer  "user_id"
     t.string   "project"
     t.string   "name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20121018133407) do
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
+  add_index "time_entries", ["user_id"], :name => "index_tasks_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
