@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :user do
     email "user@example.com"
+    password '123456'
     role "user"
   end
 
@@ -10,4 +11,13 @@ FactoryGirl.define do
     email "admin@example.com"
     role "admin"
   end
+
+  factory :user_racoon, parent: :user do
+    email "racoon@example.com"
+  end
+
+  factory :user_fox, parent: :user do
+    email "fox@example.com"
+  end
+
 end
