@@ -17,6 +17,9 @@
     when /the time entries page/
       time_entries_path
 
+    when /new time entry page/
+      new_time_entry_path
+
     # the following are examples using path_to_pickle
 
     when /^#{capture_model}(?:'s)? page$/                           # eg. the forum's page
