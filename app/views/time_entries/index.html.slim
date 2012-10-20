@@ -1,6 +1,16 @@
 h1 My time entries
 = link_to "Create new time entry", new_time_entry_path
 
-- collection.each do |te|
-	= te.name
-	br
+table.table
+  tr
+    th Task name
+    th Project name
+    th Real time
+    th Delivered time
+
+  - collection.each do |te|
+  	tr
+      td= te.name
+      td= te.project
+      td= te.real_time
+      td= te.time_points
