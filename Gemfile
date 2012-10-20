@@ -6,7 +6,7 @@ gem 'pg'
 
 gem "slim-rails"
 gem 'jquery-rails'
-gem "twitter-bootstrap-rails", '~> 2.0.2'
+gem "twitter-bootstrap-rails", '2.0.7'
 gem 'simple_form'
 gem 'cancan'
 gem "devise"

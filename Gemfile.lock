@@ -247,7 +247,7 @@ GEM
     treetop (1.4.11)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.0.9)
+    twitter-bootstrap-rails (2.0.7)
       actionpack (>= 3.1)
       less-rails (~> 2.2.2)
       railties (>= 3.1)
@@ -290,6 +290,6 @@ DEPENDENCIES
   simple_form
   slim-rails
   therubyracer
-  twitter-bootstrap-rails (~> 2.0.2)
+  twitter-bootstrap-rails (= 2.0.7)
   uglifier (>= 1.0.3)
   webmock
