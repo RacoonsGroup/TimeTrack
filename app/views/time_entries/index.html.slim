@@ -14,7 +14,7 @@ table.table
   tbody
     - collection.each do |te|
     	tr
-        td= te.name
+        td= link_to te.name, time_entry_path(te)
         td= te.project
         td= te.real_time
         td= te.time_points

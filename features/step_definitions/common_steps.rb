@@ -22,3 +22,7 @@ end
 Then /^(?:|I )should not see "([^\"]*)"$/ do |text|
 	page.should have_no_content(text)
 end
+
+Then /^I should see (\d+) error$/ do |arg1|
+  page.should raise_error{|e| e.response_code.should == '404'}
+end

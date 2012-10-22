@@ -17,6 +17,10 @@ class TimeEntriesController < InheritedResources::Base
     delete!{ collection_url}
   end
 
+  def show
+    @time_entry=TimeEntry.find(params[:id])
+  end
+
   protected
     def begin_of_association_chain
       current_user

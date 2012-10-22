@@ -40,3 +40,8 @@ end
 Then /^I should see my time entry$/ do
   page.should have_content('first time entry')
 end
+
+Then /^I should see my detailed time entry$/ do
+  page.should have_content('my task')
+end
+

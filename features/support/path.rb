@@ -28,6 +28,10 @@
       te_id = TimeEntry.where(name: $1).first.id
       edit_time_entry_path(te_id) 
 
+    when /show time entry page for "(.*)"/
+      te_id = TimeEntry.where(name: $1).first.id
+      time_entry_path(te_id)
+
     # the following are examples using path_to_pickle
 
     when /^#{capture_model}(?:'s)? page$/                           # eg. the forum's page
