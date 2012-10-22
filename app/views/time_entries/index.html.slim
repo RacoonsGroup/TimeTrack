@@ -1,6 +1,7 @@
 h1 My time entries
 = link_to "Create new time entry", new_time_entry_path
 
+
 table.table
   thead
     tr
@@ -8,6 +9,8 @@ table.table
       th Project name
       th Real time
       th Delivered time
+      th
+      th
   tbody
     - collection.each do |te|
     	tr
@@ -15,3 +18,5 @@ table.table
         td= te.project
         td= te.real_time
         td= te.time_points
+        td = link_to "Edit", edit_time_entry_path(te) 
+        td = link_to "Delete", time_entry_path(te), method: :delete

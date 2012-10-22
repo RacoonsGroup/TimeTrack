@@ -6,7 +6,15 @@ class TimeEntriesController < InheritedResources::Base
   end
 
   def update
-    update! { collection_url }
+    update!{ collection_url }
+  end
+
+  def edit
+    edit!{ collection_url }
+  end
+
+  def delete
+    delete!{ collection_url}
   end
 
   protected
