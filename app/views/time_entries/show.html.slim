@@ -1,0 +1,22 @@
+h1 Show my Time Entry
+
+
+table.table
+  thead
+    tr
+      th Task name
+      th Project name
+      th Real time
+      th Delivered time
+      th Description
+  tbod1y
+      td= resource.name
+      td= resource.project
+      td= resource.real_time
+      td= resource.time_points
+      td= resource.description
+br
+
+= link_to 'destroy', time_entry_path(resource), method: :delete, confirm: 'Are you sure?'
+
+

@@ -2,7 +2,7 @@ class TimeEntriesController < InheritedResources::Base
   actions :all
 
   def create
-    create!{ collection_url }
+    create! { collection_url }
   end
 
   def update
@@ -11,14 +11,6 @@ class TimeEntriesController < InheritedResources::Base
 
   def edit
     edit!{ collection_url }
-  end
-
-  def delete
-    delete!{ collection_url}
-  end
-
-  def show
-    @time_entry=TimeEntry.find(params[:id])
   end
 
   protected

@@ -37,6 +37,10 @@ When /^I fill in valid time entry data$/ do
   click_on("Save time entry")
 end
 
+When /^I removing item$/ do
+  click_on "Delete"
+end
+
 Then /^I should see my time entry$/ do
   page.should have_content('first time entry')
 end
@@ -44,4 +48,9 @@ end
 Then /^I should see my detailed time entry$/ do
   page.should have_content('my task')
 end
+
+Then /^I should not see my time entry$/ do
+  page.should_not have_content('first_task')
+end
+
 
