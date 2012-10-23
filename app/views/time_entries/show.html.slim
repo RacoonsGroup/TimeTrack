@@ -9,14 +9,14 @@ table.table
       th Real time
       th Delivered time
       th Description
+      th
+      th
   tbod1y
       td= resource.name
       td= resource.project
       td= resource.real_time
       td= resource.time_points
       td= resource.description
+      td= link_to 'destroy', time_entry_path(resource), method: :delete, confirm: 'Are you sure?'
+      td= link_to 'edit', edit_time_entry_path(resource)
 br
-
-= link_to 'destroy', time_entry_path(resource), method: :delete, confirm: 'Are you sure?'
-
-
