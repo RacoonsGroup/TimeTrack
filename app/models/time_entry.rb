@@ -10,7 +10,7 @@ class TimeEntry < ActiveRecord::Base
   validates :project, length: { maximum: 100 }
   validates :real_time, numericality: { greater_than: 0 }
   validates :status, inclusion: { in: STATUSES }
-  validates :time_points, numericality: true
+  validates :time_points, numericality: true, allow_blank: true
 
 
 end
