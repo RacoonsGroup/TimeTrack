@@ -1,10 +1,9 @@
 TimeTrack::Application.routes.draw do
 
-
+  devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  devise_for :users
+  resources :time_entries
 
   root :to => 'dashboard#show'
-  resources :time_entries
 end

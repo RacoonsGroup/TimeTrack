@@ -9,7 +9,7 @@ class Ability
         can :dashboard
       else
         can :create, :time_entry
-        can :manage, TimeEntry, user_id: @user.id
+        can :manage, TimeEntry, user_id: @user.id if @user
         cannot :manage, :all
       end
   end
