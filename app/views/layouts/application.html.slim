@@ -42,7 +42,9 @@ html lang="en"
             ul.nav.nav-list
               li.nav-header Sidebar
               li= link_to "My time entries", time_entries_path
+
         .span9
+          = render 'shared/messages'
           = yield
 
       footer
