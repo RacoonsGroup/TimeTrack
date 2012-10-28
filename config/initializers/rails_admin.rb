@@ -34,7 +34,7 @@ RailsAdmin.config do |config|
   # config.included_models = ['TimeEntry', 'User']
 
   # Label methods for model instances:
-  # config.label_methods << :description # Default is [:name, :title]
+  config.label_methods << :email # Default is [:name, :title]
 
 
   ################  Model configuration  ################
