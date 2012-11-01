@@ -3,6 +3,9 @@ class TimeEntriesController < InheritedResources::Base
 
   def create
     create! { collection_url }
+    if @time_entry.save 
+      TimeEntryMailer.new_time_entry(current_user,@time_entry).deliver
+    end  
   end
 
   def update

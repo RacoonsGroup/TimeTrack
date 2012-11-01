@@ -24,6 +24,7 @@ end
 
 group :development do
   gem 'rails_best_practices'
+  gem "letter_opener"
 end
 
 group :development, :test do

@@ -1,0 +1,11 @@
+h1
+  | Пользователь с почтой #{@user.email} создал TimeEntry
+ul 
+  li Имя: #{@time_entry.name}
+  li Проект: #{@time_entry.project}
+  li Реальное время: #{@time_entry.real_time} 
+  li Заделиверенное время: #{@time_entry.time_points}
+br
+= link_to @time_entry.name, time_entry_url(@time_entry)
+
+p Have awesome day.
