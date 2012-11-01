@@ -2,10 +2,10 @@ class TimeEntriesController < InheritedResources::Base
   actions :all
 
   def create
-    create! { collection_url }
-    if resource.valid?
-      TimeEntryMailer.new_time_entry(current_user, resource).deliver
-    end 
+    create! do |success, failure|
+      TimeEntryMailer.new_time_entry(current_user, resource).deliver if success.present?
+      success.html { redirect_to collection_url }
+    end
   end
 
   def update

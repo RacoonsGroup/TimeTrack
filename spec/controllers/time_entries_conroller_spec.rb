@@ -4,15 +4,25 @@ include Devise::TestHelpers
 
 describe TimeEntriesController do
   describe '#create' do
-    context "when te successfully created" do
+    before(:each) do
+      sign_in FactoryGirl.create(:user)
+    end
+
+    context "when time entry successfully created" do
       it 'will send email' do
-        # sign_in FactoryGirl.create(:user)
-        # params = { time_entry: FactoryGirl.build(:time_entry).attributes.reject {|k,v| v.nil?} }
-        TimeEntryMailer.should_receive(:new_time_entry)
-        TimeEntry.any_instance.stub(:valid?).and_return(true)
-        TimeEntriesController.stub!(:current_user).and_return(FactoryGirl.build(:user))
+        TimeEntry.any_instance.stub(:save).and_return(true)
+        TimeEntryMailer.stub(:new_time_entry).and_return('email')
+        TimeEntryMailer.new_time_entry.should_receive(:deliver)
         post :create
-        TimeEntry.any_instance.unstub(:valid?)
+      end
+    end
+
+    context "when time entry cannot create" do
+      it 'won`t send email' do
+        # TimeEntry.any_instance.stub(:save).and_return(true)
+        TimeEntryMailer.stub(:new_time_entry).and_return('email')
+        TimeEntryMailer.new_time_entry.should_not_receive(:deliver)
+        post :create
       end
     end
   end
