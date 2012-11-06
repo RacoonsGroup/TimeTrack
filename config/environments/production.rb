@@ -67,5 +67,14 @@ TimeTrack::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'task-track.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => "app8515662@heroku.com",
+    :password => "guozvwxp",
+    :domain => "task-track.herokuapp.com",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
 end
