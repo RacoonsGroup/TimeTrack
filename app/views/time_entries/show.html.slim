@@ -1,22 +1,20 @@
 h1 Show my Time Entry
 
+dl.dl-horizontal
+  dt Task Name
+  dd= resource.name
 
-table.table
-  thead
-    tr
-      th Task name
-      th Project name
-      th Real time
-      th Delivered time
-      th Description
-      th
-      th
-  tbod1y
-      td= resource.name
-      td= resource.project
-      td= resource.real_time
-      td= resource.time_points
-      td= resource.description
-      td= link_to 'destroy', time_entry_path(resource), method: :delete, confirm: 'Are you sure?'
-      td= link_to 'edit', edit_time_entry_path(resource)
-br
+  dt Project Name
+  dd= resource.project
+
+  dt Real Time
+  dd= resource.real_time
+
+  dt Delivered time
+  dd= resource.time_points
+
+  dt Description
+  dd= resource.description
+
+= button_to 'Destroy', time_entry_path(resource), method: :delete, confirm: 'Are you sure?', class: "btn btn-danger"
+= button_to 'Edit', edit_time_entry_path(resource), method: :get, class: "btn btn-primary"
