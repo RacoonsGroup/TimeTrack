@@ -4,6 +4,7 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
+gem 'rails-backbone', '0.8.0'
 gem 'momentjs-rails'
 gem "slim-rails"
 gem 'jquery-rails'
