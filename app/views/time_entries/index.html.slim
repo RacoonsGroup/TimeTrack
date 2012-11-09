@@ -20,3 +20,11 @@ table.table
         td= te.time_points
         td = link_to "Edit", edit_time_entry_path(te) 
         td = link_to "Delete", time_entry_path(te), method: :delete
+
+.calendar_wrap
+
+javascript:
+  $(function () {
+    window.TimeTrack.init();
+    Backbone.history.start();
+  });

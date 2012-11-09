@@ -10,3 +10,5 @@ window.TimeTrack =
   Collections: {}
   Routers: {}
   Views: {}
+  init: ->
+    new TimeTrack.Routers.CalendarRouter()
