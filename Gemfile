@@ -4,10 +4,12 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
+gem 'momentjs-rails'
 gem "slim-rails"
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails", '2.0.7'
 gem 'simple_form'
+
 gem 'cancan'
 gem "devise"
 gem 'rails_admin'
