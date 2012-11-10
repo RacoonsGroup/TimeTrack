@@ -3,15 +3,19 @@ class ArticlesController < InheritedResources::Base
 
   def toggle_read
     resource.toggle_read(current_user)
-    render json: resource
+    respond_to do |format|
+      format.json { render json: resource }
+      format.html { redirect_to collection_url }
+    end
   end
 
-  # def create
-  #   create! do |success, failure|
-  #     TimeEntryMailer.new_time_entry(current_user, resource).deliver if success.present?
-  #     success.html { redirect_to collection_url }
-  #   end
-  # end
+  def create
+    create! do |success, failure|
+      ArticleMailer.new_article(current_user, resource).deliver if success.present?
+      success.html { redirect_to collection_url }
+    end
+  end
+
   protected
     def collection
       @articles ||= end_of_association_chain.page(params[:page]).per(10)

@@ -5,7 +5,7 @@ TimeTrack::Application.routes.draw do
 
   resources :time_entries
   resources :articles, only: [:index, :new, :create] do
-    member { post :toggle_read }
+    member { get :toggle_read }
   end
 
   root :to => 'dashboard#show'

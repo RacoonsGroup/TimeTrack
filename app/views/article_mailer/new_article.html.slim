@@ -1,0 +1,13 @@
+h1 Пользователь с email #{@user.email} добавил новую статью
+
+ul 
+  li Название: #{@article.title}
+  li Важность: #{@article.importance}
+  li Адрес: #{link_to 'Читать', @article.url} 
+  li Описание: #{@article.short_description}
+
+br
+
+= link_to "Смотреть все статьи", articles_url
+br
+= link_to "Отметить статью прочитанной", toggle_read_article_url(@article)
