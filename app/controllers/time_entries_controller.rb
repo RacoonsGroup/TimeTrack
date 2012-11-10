@@ -20,4 +20,8 @@ class TimeEntriesController < InheritedResources::Base
     def begin_of_association_chain
       current_user
     end
+
+    def collection
+      @time_entries ||= end_of_association_chain.page(params[:page]).per(10)
+    end
 end
