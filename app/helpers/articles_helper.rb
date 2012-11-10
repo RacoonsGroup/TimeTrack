@@ -14,9 +14,13 @@ module ArticlesHelper
 
   def read_unread_button_for_article article
     if current_user.read? article
-      content_tag :button, 'Mark as unread', class: "btn btn-danger btn-mini"
+      html_class, label = 'danger', 'Mark as unread'
     else
-      content_tag :button, 'Mark as read', class: "btn btn-success btn-mini"
+      html_class, label = 'success', 'Mark as read'
     end
+    content_tag :button, label,
+      class: "btn btn-#{html_class} btn-mini",
+      'data-id' => article.id,
+      'data-url' => toggle_read_article_path(article.id)
   end
 end

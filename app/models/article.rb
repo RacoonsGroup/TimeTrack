@@ -9,4 +9,20 @@ class Article < ActiveRecord::Base
   def read_by? user
     users.where(id: user.id).any?
   end
+
+  def toggle_read user
+    if read_by? user
+      unread_by! user
+    else
+      read_by! user
+    end
+  end
+
+  def unread_by! user
+    users.delete(user)
+  end
+
+  def read_by! user
+    users << user
+  end
 end
