@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   ROLE = %w(user admin)
 
   has_many :time_entries
+  has_and_belongs_to_many :articles
 
   def set_default_user_role
     self.role = User.default_role unless role
