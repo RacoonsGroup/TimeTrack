@@ -1,0 +1,19 @@
+h1 Articles
+= link_to "Add new article", new_article_path
+
+table.table
+  thead
+    tr
+      th 
+      th Title
+      th Importance
+      th Short Description
+      th 
+  tbody
+    - collection.each do |art|
+      tr
+        td= read_unread_label_for_article(art)
+        td= art.title
+        td= importance_label_for_article(art)
+        td= art.short_description
+        td= read_unread_button_for_article(art)

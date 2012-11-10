@@ -5,4 +5,8 @@ class Article < ActiveRecord::Base
 
   validates :title, :short_description, :importance, presence: true
   validates :importance, inclusion: { in: 1..5 }
+
+  def read_by? user
+    users.where(id: user.id).any?
+  end
 end

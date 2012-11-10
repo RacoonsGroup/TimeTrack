@@ -4,6 +4,7 @@ TimeTrack::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :time_entries
+  resources :articles, only: [:index, :new, :create]
 
   root :to => 'dashboard#show'
 end
