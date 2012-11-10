@@ -8,6 +8,9 @@ gem "slim-rails"
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails", '2.0.7'
 gem 'simple_form'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 gem 'cancan'
 gem "devise"
 gem 'rails_admin'

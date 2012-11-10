@@ -109,6 +109,9 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-bootstrap (0.1.3)
+      kaminari (>= 0.13.0)
+      rails
     launchy (2.1.2)
       addressable (~> 2.3)
     less (2.2.2)
@@ -282,6 +285,8 @@ DEPENDENCIES
   factory_girl_rails
   inherited_resources
   jquery-rails
+  kaminari
+  kaminari-bootstrap
   letter_opener
   pg
   pickle

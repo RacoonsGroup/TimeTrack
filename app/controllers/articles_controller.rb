@@ -7,4 +7,8 @@ class ArticlesController < InheritedResources::Base
   #     success.html { redirect_to collection_url }
   #   end
   # end
+  protected
+    def collection
+      @articles ||= end_of_association_chain.page(params[:page]).per(10)
+    end
 end
