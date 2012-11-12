@@ -6,7 +6,6 @@ table.table#articles
     tr
       th 
       th Title
-      th Url
       th Importance
       th Short Description
       th 
@@ -14,8 +13,7 @@ table.table#articles
     - collection.each do |art|
       tr
         td= read_unread_label_for_article(art)
-        td= art.title
-        td= link_to 'url', art.url
+        td= link_to art.title, art.url
         td= importance_label_for_article(art)
         td= art.short_description
         td= read_unread_button_for_article(art)
