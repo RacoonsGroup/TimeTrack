@@ -5,5 +5,6 @@ ul
   li Проект: #{@time_entry.project}
   li Реальное время: #{@time_entry.real_time} 
   li Заделиверенное время: #{@time_entry.time_points}
+  li Дата: #{@time_entry.date}
 br
 = link_to @time_entry.name, time_entry_url(@time_entry)
