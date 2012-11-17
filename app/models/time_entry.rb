@@ -1,6 +1,6 @@
 class TimeEntry < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :description, :name, :project, :real_time, :status, :time_points
+  attr_accessible :description, :name, :project, :real_time, :status, :time_points, :date
 
   STATUSES = %w(finished processing)
 
@@ -11,6 +11,7 @@ class TimeEntry < ActiveRecord::Base
   validates :real_time, numericality: { greater_than: 0 }
   validates :status, inclusion: { in: STATUSES }
   validates :time_points, numericality: true, allow_blank: true
+  validates :date, presence: true
 
 
 end
