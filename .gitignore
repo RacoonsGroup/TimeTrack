@@ -12,6 +12,12 @@ test/tmp
 test/version_tmp
 tmp
 
+
+
+
+Gemfile
+
+
 # YARD artifacts
 .yardoc
 _yardoc

@@ -18,6 +18,8 @@ html lang="en"
     link href="images/favicon.ico" rel="shortcut icon"
 
   body
+
+
     .navbar.navbar-fluid-top
       .navbar-inner
         .container-fluid
@@ -27,10 +29,7 @@ html lang="en"
             span.icon-bar
             = link_to "TimeTrack", root_path, class: 'brand'
           .container-fluid.nav-collapse
-            ul.nav
-              li= link_to "My time entries", time_entries_path
-              li= link_to "Articles", articles_path
-              li= link_to "Statistic", statistic_index_path
+            = render_navigation
             ul.nav{class="pull-right"}
               li= render 'shared/login'
               li= render 'devise/shared/login_items'
@@ -43,8 +42,8 @@ html lang="en"
           .well.sidebar-nav
             ul.nav.nav-list
               li.nav-header Sidebar
-              li= link_to "My time entries", time_entries_path
-              li= link_to "Articles", articles_path
+            = render_navigation(:context => "sidebar")
+
 
         .span9
           = render 'shared/messages'

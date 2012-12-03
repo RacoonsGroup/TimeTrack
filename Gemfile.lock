@@ -217,6 +217,8 @@ GEM
     sexp_processor (4.0.1)
     shoulda-matchers (1.4.1)
       activesupport (>= 3.0.0)
+    simple-navigation (3.9.0)
+      activesupport (>= 2.3.2)
     simple_form (2.0.4)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
+  simple-navigation
   simple_form
   slim-rails
   therubyracer
