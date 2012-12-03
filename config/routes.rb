@@ -9,4 +9,6 @@ TimeTrack::Application.routes.draw do
   end
 
   root :to => 'dashboard#show'
+
+  get "/statistic" => "statistic#index", :as => :statistic_index
 end

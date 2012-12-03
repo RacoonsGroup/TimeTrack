@@ -32,7 +32,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'ruby-debug19'
+  #gem 'ruby-debug19'
   gem 'shoulda-matchers'
   gem 'autotest-rails'
 end
