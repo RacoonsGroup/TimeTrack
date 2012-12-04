@@ -1,15 +1,26 @@
-'Interval: 
-br
-br
 
-= render :partial => '/shared/statistics_form'
+= render :partial => '/shared/filter_form'
 
 br
-br
 
-'Real time:
-= @time_entries[0]
-br
-'Time points
-= @time_entries[1]
+table.table
+  thead
+    tr
+      th Task name
+      th Project name
+      th Real time (#{@time_entries.collect(&:real_time).sum})
+      th Delivered time (#{@time_entries.collect(&:time_points).sum})
+      th Date
+      th
+      th
+  tbody
+    - @time_entries.each do |te|
+      tr
+        td= link_to te.name, time_entry_path(te)
+        td= te.project
+        td= te.real_time
+        td= te.time_points
+        td= te.date
+        td = link_to "Edit", edit_time_entry_path(te)
+        td = link_to "Delete", time_entry_path(te), method: :delete
 

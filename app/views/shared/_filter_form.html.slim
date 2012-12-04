@@ -1,0 +1,13 @@
+= form_tag "/statistics", method: :get, class: "well" do
+  'Form: 
+  =' text_field_tag "from_date"
+  
+  'To: 
+  =' text_field_tag "to_date"
+  
+  - if current_user.admin?
+    'User id: 
+    =' text_field_tag "user_id"
+    
+  = submit_tag 'Filter'
+  

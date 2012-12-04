@@ -1,4 +1,7 @@
 $ ->
+  $('#from_date').datepicker(dateFormat: "dd.mm.yy")
+  $('#to_date').datepicker(dateFormat: "dd.mm.yy")
+
   $('table#articles .btn').bind('click', ->
     element = this
     $.ajax(

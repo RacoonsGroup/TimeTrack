@@ -16,15 +16,9 @@ class TimeEntry < ActiveRecord::Base
 
   def self.in_date_range(from, to, user_id)
     if from && to && !from.blank? && !to.blank?
-      [
-        TimeEntry.where(user_id: user_id, date: [(from.to_date)..(to.to_date)]).collect(&:real_time).sum,
-        TimeEntry.where(user_id: user_id, date: [(from.to_date)..(to.to_date)]).collect(&:time_points).sum
-      ]
+        TimeEntry.where(user_id: user_id, date: [(from.to_date)..(to.to_date)])
     else
-      [
-        TimeEntry.where(user_id: user_id).collect(&:real_time).sum,
-        TimeEntry.where(user_id: user_id).collect(&:time_points).sum
-      ]
+        TimeEntry.where(user_id: user_id)
     end
   end
 end

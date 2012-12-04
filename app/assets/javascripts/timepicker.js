@@ -1880,12 +1880,3 @@
   $.timepicker.version = "1.1.1";
 
 })(jQuery);
-
-
-
-/* Timepicker init */
-$(function(){
-  //$.datepicker.formatDate('yyyy-mm-dd');
-  $('#from_date').datepicker({dateFormat: "dd.mm.yy"})
-  $('#to_date').datepicker({dateFormat: "dd.mm.yy"})
-});
