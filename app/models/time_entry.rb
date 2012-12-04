@@ -15,7 +15,7 @@ class TimeEntry < ActiveRecord::Base
 
 
   def self.in_date_range(from, to, user_id)
-    if from && to && !from.blank? && !to.blank?
+    if from.present && to.present
         TimeEntry.where(user_id: user_id, date: [(from.to_date)..(to.to_date)])
     else
         TimeEntry.where(user_id: user_id)
