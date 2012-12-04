@@ -3,4 +3,6 @@ class StatisticController < InheritedResources::Base
   def index
     TimeEntry.all
   end
+
+  def 
 end
