@@ -17,6 +17,18 @@ html lang="en"
     link href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed"
     link href="images/favicon.ico" rel="shortcut icon"
 
+
+    script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"
+    script type="text/javascript" src="http://code.jquery.com/ui/1.9.1/jquery-ui.min.js"
+
+    link rel="stylesheet" media="all" type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/smoothness/jquery-ui.css"
+    link rel="stylesheet" media="all" type="text/css" href="jquery-ui-timepicker-addon.css"
+
+    = javascript_include_tag "timepicker"
+
+
+
+
   body
 
 
@@ -55,4 +67,6 @@ html lang="en"
       Javascripts
       \==================================================
     /! Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
+    /= javascript_include_tag "application"
+
+
