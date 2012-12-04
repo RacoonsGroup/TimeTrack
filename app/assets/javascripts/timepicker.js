@@ -1885,6 +1885,7 @@
 
 /* Timepicker init */
 $(function(){
-  $('#timepicker1').datetimepicker()
-  $('#timepicker2').datetimepicker()
+  //$.datepicker.formatDate('yyyy-mm-dd');
+  $('#from_date').datepicker({dateFormat: "dd.mm.yy"})
+  $('#to_date').datepicker({dateFormat: "dd.mm.yy"})
 });

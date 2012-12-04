@@ -52,7 +52,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.dom_class = "nav"
     primary.item :MyTimeEntries, 'My time entries', time_entries_path
     primary.item :Articles, 'Articles', articles_path
-    primary.item :Statistic, 'Statistic', statistic_index_path
+    primary.item :Statistics, 'Statistics', "/statistics"
 
 
     # Add an item which has a sub navigation (same params, but with block)
