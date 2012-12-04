@@ -1,4 +1,4 @@
-= form_tag "/statistics", method: :get, class: "well" do
+= form_tag "/statistics", method: :get, class: "statistic_fields" do
   'Form: 
   =' text_field_tag "from_date"
   
@@ -7,7 +7,7 @@
   
   - if current_user.admin?
     'User id: 
-    =' text_field_tag "user_id"
+    =' select_tag :user_id, options_from_collection_for_select(@users, :id, :email)
     
   = submit_tag 'Filter'
   
