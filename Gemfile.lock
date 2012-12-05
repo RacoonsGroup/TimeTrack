@@ -281,6 +281,7 @@ DEPENDENCIES
   rails (= 3.2.8)
   rails_admin
   rails_best_practices
+  rspec
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
