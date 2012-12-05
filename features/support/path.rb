@@ -19,7 +19,12 @@
 
     when /new time entry page/
       new_time_entry_path
-    
+
+
+    when /statistics page/
+      "/statistics"
+
+
     when /show time entry page for "(.*)"/
       te_id = TimeEntry.where(name: $1).first.id
       time_entry_path(te_id)
