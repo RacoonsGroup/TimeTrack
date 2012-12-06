@@ -11,4 +11,5 @@ Feature: Show Statistics
     When I go to the statistics page
     Then I should get a response with status 200
     Then I should get a filter_form
+    Then I should get a datepicker
     Then I should get a table

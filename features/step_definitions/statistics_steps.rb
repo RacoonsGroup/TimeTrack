@@ -7,8 +7,12 @@ Then /^I should get a table$/ do
 end
 
 Then /^I should get a filter_form$/ do
-  page.should have_content("From")
-  page.should have_content("To")
+  puts page.body.should =~ /from_date/
+  puts page.body.should =~ /to_date/
+end
+
+Then /^I should get a datepicker$/ do
+  puts page.body.should =~ /container-fluid/
 end
 
 Then /^I should get a response with status (\d+)$/ do |status|
