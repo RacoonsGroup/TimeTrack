@@ -22,6 +22,6 @@ class TimeEntriesController < InheritedResources::Base
     end
 
     def collection
-      @time_entries ||= end_of_association_chain.page(params[:page]).per(10)
+      @time_entries ||= end_of_association_chain.order('date desc').page(params[:page]).per(10)
     end
 end
