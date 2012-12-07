@@ -16,6 +16,11 @@ class TimeEntriesController < InheritedResources::Base
     edit!{ collection_url }
   end
 
+  def index
+    @page = params[:page] or 1
+    @time_entries = TimeEntry.where(:user_id => current_user.id).page(@page)
+  end
+
   protected
     def begin_of_association_chain
       current_user

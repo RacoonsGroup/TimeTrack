@@ -13,7 +13,7 @@ table.table
       th
       th
   tbody
-    - collection.each do |te|
+    - @time_entries.page(params[:page]).each do |te|
       tr
         td= link_to te.name, time_entry_path(te)
         td= te.project
@@ -23,4 +23,4 @@ table.table
         td = link_to "Edit", edit_time_entry_path(te) 
         td = link_to "Delete", time_entry_path(te), method: :delete
 
-= paginate collection
+= paginate @time_entries

@@ -9,3 +9,4 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require common
+//= require jquery-ui

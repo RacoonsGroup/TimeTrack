@@ -8,8 +8,10 @@ table.table
     tr
       th Task name
       th Project name
-      th Real time (#{@time_entries.collect(&:real_time).sum})
-      th Delivered time (#{@time_entries.collect(&:time_points).sum})
+      /th Real time (#{@time_entries.collect(&:real_time).sum})
+      /th Delivered time (#{@time_entries.collect(&:time_points).sum})
+      th Real time (#{@real_time})
+      th Delivered time (#{@delivered_time})
       th Date
       th
       th
@@ -24,3 +26,4 @@ table.table
         td = link_to "Edit", edit_time_entry_path(te)
         td = link_to "Delete", time_entry_path(te), method: :delete
 
+= paginate @time_entries
