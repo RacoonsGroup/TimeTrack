@@ -5,5 +5,5 @@
  *= require_self
  *= require bootstrap_and_overrides
  *= require common
- *= require jquery-ui
+ *= require jquery_ui/jquery-ui
 */
