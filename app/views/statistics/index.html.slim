@@ -8,8 +8,6 @@ table.table
     tr
       th Task name
       th Project name
-      /th Real time (#{@time_entries.collect(&:real_time).sum})
-      /th Delivered time (#{@time_entries.collect(&:time_points).sum})
       th Real time (#{@real_time})
       th Delivered time (#{@delivered_time})
       th Date
