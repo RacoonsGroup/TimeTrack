@@ -16,8 +16,16 @@ class TimeEntry < ActiveRecord::Base
 
   def self.in_date_range(from, to, user_id)
     te = TimeEntry.order('date desc')
-    te = te.where(date: [(from.to_date)..(to.to_date)]) if from.present? && to.present?
-    te = te.where(user_id: user_id) if user_id.present?
+    te = te.where(user_id: user_id)
+    if from.present?
+      te = te.where("date >= ?", from.to_date)
+    end
+    if to.present?
+      te = te.where("date <= ?", to.to_date)
+    end
+
+    #te = te.where(date: [(from.to_date)..(to.to_date)]) if from.present? && to.present?
+    #te = te.where(user_id: user_id) if user_id.present?
     te
   end
 end
