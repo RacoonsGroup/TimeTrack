@@ -4,12 +4,16 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
+gem 'rb-readline'
+
 gem "slim-rails"
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails", '2.0.7'
 gem 'simple_form'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'will_paginate'
+gem 'prototype-rails'
 
 gem 'cancan'
 gem "devise"

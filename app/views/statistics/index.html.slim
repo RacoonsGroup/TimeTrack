@@ -1,8 +1,12 @@
+
+= javascript_include_tag "endless_page"
+
+
 = render '/shared/filter_form'
 
 br
 
-table.table
+table class="table" id="time_entries"
   thead
     tr
       th Task name
@@ -13,14 +17,4 @@ table.table
       th
       th
   tbody
-    - @time_entries.each do |te|
-      tr
-        td= link_to te.name, time_entry_path(te)
-        td= te.project
-        td= te.real_time
-        td= te.time_points
-        td= te.date
-        td = link_to "Edit", edit_time_entry_path(te)
-        td = link_to "Delete", time_entry_path(te), method: :delete
-
-= paginate @time_entries
+    = render partial: @time_entries

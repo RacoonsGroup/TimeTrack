@@ -6,6 +6,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+//= require prototype
+//= require prototype_ujs
+//= require effects
+//= require dragdrop
+//= require controls
+
 //= require twitter/bootstrap
 //= require bootstrap
 //= require common

@@ -1,0 +1,6 @@
+page.insert_html :bottom, :time_entries, :partial => @time_entries
+if @time_entries.total_pages > @time_entries.current_page
+  page.call 'checkScroll'
+else
+  page[:loading].hide
+end
