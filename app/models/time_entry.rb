@@ -25,4 +25,10 @@ class TimeEntry < ActiveRecord::Base
     end
     te
   end
+
+  def self.month_hours
+    mb = Date.today.at_beginning_of_month
+    me = Date.today.at_end_of_month
+    TimeEntry.where(date: (mb..me)).sum("real_time")
+  end
 end
