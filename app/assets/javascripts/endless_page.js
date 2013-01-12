@@ -3,7 +3,9 @@ var currentPage = 1;
 function checkScroll() {
   if (nearBottomOfPage()) {
     currentPage++;
-    new Ajax.Request('/statistics?page=' + currentPage, {asynchronous:true, evalScripts:true, method:'get'});
+    var from_date = document.getElementById("from_date").value;
+    var to_date =   document.getElementById("to_date").value;
+    new Ajax.Request("/statistics?to_date="+to_date+"&from_date="+from_date+"&page=" + currentPage, {asynchronous:true, evalScripts:true, method:'get'});
   } else {
     setTimeout("checkScroll()", 250);
   }

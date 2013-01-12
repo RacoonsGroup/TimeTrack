@@ -1,19 +1,19 @@
-$ ->
-  $('#from_date').datepicker(dateFormat: "dd.mm.yy")
-  $('#to_date').datepicker(dateFormat: "dd.mm.yy")
+jQuery ->
+  jQuery('#from_date').datepicker(dateFormat: "dd.mm.yy")
+  jQuery('#to_date').datepicker(dateFormat: "dd.mm.yy")
 
-  $('table#articles .btn').bind('click', ->
+  jQuery('table#articles .btn').bind('click', ->
     element = this
-    $.ajax(
-      url: $(element).data('url'),
+    jQuery.ajax(
+      url: jQuery(element).data('url'),
       dataType: 'json',
       type: 'get',
       data:
-        id: $(element).data('id')
+        id: jQuery(element).data('id')
       success: ->
-        $(element).attr('disabled', true)
+        jQuery(element).attr('disabled', true)
         alert('article updated')
       error: ->
-        $(element).attr('disabled', true)
+        jQuery(element).attr('disabled', true)
     )
   )
