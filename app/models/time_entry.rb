@@ -4,7 +4,6 @@ class TimeEntry < ActiveRecord::Base
 
   STATUSES = %w(finished processing)
 
-
   validates :name, :user_id, :project, :real_time, :status, presence: true
   validates :name, length: { maximum: 255 }
   validates :project, length: { maximum: 100 }

@@ -1,7 +1,9 @@
 class TimeEntriesController < InheritedResources::Base
+  include TimeEntriesHelper
   actions :all
 
   def create
+    params[:time_entry][:real_time] = pretty_time(params[:time_entry][:real_time])
     create! do |success, failure|
       TimeEntryMailer.new_time_entry(current_user, resource).deliver if success.present?
       success.html { redirect_to collection_url }
