@@ -11,4 +11,9 @@ TimeTrack::Application.routes.draw do
   root :to => 'dashboard#show'
 
   resources :statistics, only: [:index]
+
+  namespace :api do
+    resources :time_entries
+  end
+
 end
