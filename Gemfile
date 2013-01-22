@@ -33,6 +33,7 @@ end
 
 group :development do
   gem 'rails_best_practices'
+  gem 'heroku'
   gem "letter_opener"
 end
 
