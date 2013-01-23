@@ -12,8 +12,9 @@ gem "twitter-bootstrap-rails", '2.0.7'
 gem 'simple_form'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
-gem 'will_paginate'
+gem "will_paginate"
 gem 'prototype-rails'
+
 
 gem 'cancan'
 gem "devise"

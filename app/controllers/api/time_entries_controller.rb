@@ -1,5 +1,5 @@
 module Api
-  class TimeEntriesController < ActionController::Base #< ApplicationController
+  class TimeEntriesController < ActionController::Base
 
     def index
       user = authenticate!
