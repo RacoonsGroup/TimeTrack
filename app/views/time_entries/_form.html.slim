@@ -1,9 +1,9 @@
 = simple_form_for resource, html: {class: 'form-horizontal'} do |f|
   = f.input :name
   = f.input :project
-  = f.input :date, :input_html => { :value => "#{Date.today}" }
+  = f.input :date, input_html: { value: "#{Date.today}" }
   = f.input :status, collection: TimeEntry::STATUSES
-  = f.input :real_time
+  = f.input :real_time, as: :string
   = f.input :time_points
   = f.input :description, input_html: {cols: 100, rows: 5}
   = f.submit 'Save time entry', class: 'btn btn-primary'
