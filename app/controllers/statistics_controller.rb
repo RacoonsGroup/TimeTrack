@@ -5,13 +5,13 @@ class StatisticsController < ApplicationController
 
     @from_date = params[:from_date]
     @to_date = params[:to_date]
-
     @time_entries = TimeEntry.in_date_range(@from_date,
                                             @to_date, user_id).
                                            paginate(:page => params[:page],
-                                                   :per_page => 15)
+                                                   :per_page => 5)
     if current_user.admin?
       @users = User.all
+      @users.unshift(User.new(email: "all"))
     end
 
     @real_time = @time_entries.sum(:real_time)
