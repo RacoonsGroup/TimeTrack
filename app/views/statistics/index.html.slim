@@ -3,7 +3,9 @@
 
 
 = render "/shared/filter_form"
-= render "/shared/statistics_progress_bar"
+
+/ Will be permanently removed in latest versions
+/= render "/shared/statistics_progress_bar"
 
 br
 
@@ -18,4 +20,14 @@ table class="table" id="time_entries"
       th
       th
   tbody
-    = render partial: @time_entries
+    - @time_entries.each do |te|
+      tr
+        td = link_to te.name, time_entry_path(te)
+        td = te.project
+        td = te.real_time
+        td = te.time_points
+        td = te.date
+        td = link_to "Edit", edit_time_entry_path(te)
+        td = link_to "Delete", time_entry_path(te), method: :delete
+
+= paginate @time_entries

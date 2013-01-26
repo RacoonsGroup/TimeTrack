@@ -7,16 +7,20 @@ class StatisticsController < ApplicationController
     @to_date = params[:to_date]
     @time_entries = TimeEntry.in_date_range(@from_date,
                                             @to_date, user_id).
-                                           paginate(:page => params[:page],
-                                                   :per_page => 5)
+                                            page(params[:page])
     if current_user.admin?
       @users = User.all
       @users.unshift(User.new(email: "all"))
     end
 
-    @real_time = @time_entries.sum(:real_time)
-    @delivered_time = @time_entries.sum(:time_points)
+    @real_time = TimeEntry.in_date_range(@from_date,
+                                         @to_date, user_id).
+                                         sum(:real_time)
+    @delivered_time = TimeEntry.in_date_range(@from_date,
+                                              @to_date, user_id).
+                                              sum(:time_points)
 
-    @month_hours = TimeEntry.month_hours
+    # Will be removed in latest versions
+    #@month_hours = TimeEntry.month_hours
   end
 end

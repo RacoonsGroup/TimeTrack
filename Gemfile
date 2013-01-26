@@ -15,7 +15,6 @@ gem 'kaminari-bootstrap'
 gem "will_paginate"
 gem 'prototype-rails'
 
-
 gem 'cancan'
 gem "devise"
 gem 'rails_admin'

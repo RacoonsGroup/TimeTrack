@@ -1,4 +1,7 @@
 module StatisticsHelper
+=begin
+
+  WILL BE REMOVED!
 
   def progress_bar_percents
     today = Time.now.day
@@ -46,5 +49,5 @@ module StatisticsHelper
     today = Time.now.day
     (today <= 15) ? 15 : days_in_month
   end
-
+=end
 end

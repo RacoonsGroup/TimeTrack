@@ -1,12 +1,12 @@
 = form_tag "/statistics", method: :get, class: "statistic_fields well" do
-  'From: 
+  'From:
   =' text_field_tag "from_date", @from_date
 
-  'To: 
+  'To:
   =' text_field_tag "to_date", @to_date
 
   - if current_user.admin?
-    'User id: 
+    'User id:
     =' select_tag :user_id, options_from_collection_for_select(@users, :id, :email), include_blank: true
 
   = submit_tag 'Filter'
