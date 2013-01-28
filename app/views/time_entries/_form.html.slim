@@ -1,6 +1,6 @@
 = simple_form_for resource, html: {class: 'form-horizontal'} do |f|
   = f.input :name
-  = f.input :project
+  = f.association :project , label_method: :project_name
   = f.input :date, :input_html => { :value => "#{Date.today}" }
   = f.input :status, collection: TimeEntry::STATUSES
   = f.input :real_time
