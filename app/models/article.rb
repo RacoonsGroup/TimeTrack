@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   validates :title, :short_description, :importance, :url, presence: true
   validates :importance, inclusion: { in: 1..5 }
 
-  default_scope order('created_at desc')
+  # default_scope order('created_at desc')
 
   def read_by? user
     users.where(id: user.id).any?

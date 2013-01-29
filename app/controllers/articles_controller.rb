@@ -18,6 +18,12 @@ class ArticlesController < InheritedResources::Base
 
   protected
     def collection
-      @articles ||= end_of_association_chain.page(params[:page]).per(10)
-    end
+      if params[:sort]
+        @articles = Article.order(params[:sort] + " " + params[:direction])
+      else
+        @articles = Article.all
+      end
+
+      # @articles ||= end_of_association_chain.page(params[:page]).per(10)           
+    end   
 end
