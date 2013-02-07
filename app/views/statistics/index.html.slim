@@ -19,7 +19,7 @@ table class="table" id="time_entries"
     - @time_entries.each do |te|
       tr
         td = link_to te.name, time_entry_path(te)
-        td = te.project.project_name
+        td = te.project.project_name if te.project
         td = te.real_time
         td = te.time_points
         td = te.status
