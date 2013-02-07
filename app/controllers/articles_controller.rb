@@ -23,7 +23,6 @@ class ArticlesController < InheritedResources::Base
       else
         @articles = Article.all
       end
-
       # @articles ||= end_of_association_chain.page(params[:page]).per(10)           
     end   
 end

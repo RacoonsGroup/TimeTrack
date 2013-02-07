@@ -4,9 +4,7 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   validates :title, :short_description, :importance, :url, presence: true
-  validates :importance, inclusion: { in: 1..5 }
-
-  # default_scope order('created_at desc')
+  validates :importance, inclusion: { in: 1..5 } 
 
   def read_by? user
     users.where(id: user.id).any?

@@ -9,8 +9,8 @@ table.table
       th Project name
       th Real time
       th Delivered time
+      th Status
       th Date
-      th
       th
   tbody
     - @time_entries.each do |te|
@@ -19,6 +19,7 @@ table.table
         td= te.project.project_name
         td= te.real_time
         td= te.time_points
+        td= te.status
         td= te.date
         td = link_to "Edit", edit_time_entry_path(te) 
         td = link_to "Delete", time_entry_path(te), method: :delete
