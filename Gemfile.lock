@@ -142,15 +142,12 @@ GEM
     netrc (0.7.7)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
-    pdfkit (0.5.2)
     pg (0.14.1)
     pickle (0.4.11)
       cucumber (>= 0.8)
       rake
     polyglot (0.3.3)
     progressbar (0.11.0)
-    prototype-rails (3.2.1)
-      rails (~> 3.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -300,10 +297,8 @@ DEPENDENCIES
   kaminari
   kaminari-bootstrap
   letter_opener
-  pdfkit
   pg
   pickle
-  prototype-rails
   rails (= 3.2.8)
   rails_admin
   rails_best_practices

@@ -13,7 +13,6 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem "will_paginate"
-gem 'prototype-rails'
 
 gem 'cancan'
 gem "devise"
@@ -23,8 +22,6 @@ gem 'inherited_resources'
 gem "simple-navigation"
 gem 'whenever', require: false
 gem 'wicked_pdf'
-gem 'pdfkit'
-
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

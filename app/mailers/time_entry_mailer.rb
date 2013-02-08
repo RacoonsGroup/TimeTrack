@@ -9,6 +9,6 @@ class TimeEntryMailer < ActionMailer::Base
     admins = User.where(role: 'admin')
     recipients = admins.collect(&:email).join(',')
     mail(to: recipients, subject: "Добавлен Time Entry #{user.email}")
-  end  
+  end
 
 end
