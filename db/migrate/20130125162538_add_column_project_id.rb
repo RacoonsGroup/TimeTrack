@@ -1,5 +1,5 @@
 class AddColumnProjectId < ActiveRecord::Migration
  def change
-    add_column :time_entries , :project_id , :integer
+    add_column :time_entries, :project_id, :integer 
   end
 end

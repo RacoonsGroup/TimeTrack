@@ -12,6 +12,3 @@ class ReportMailer < ActionMailer::Base
   end
 
 end
-
-
-#  ReportMailer.report_to_mail.deliver

@@ -5,6 +5,8 @@
 
 br
 
+
+
 table class="table" id="time_entries"
   thead
     tr
@@ -28,3 +30,5 @@ table class="table" id="time_entries"
         td = link_to "Delete", time_entry_path(te), method: :delete
 
 = paginate @time_entries
+
+= link_to "Download PDF", statistics_path(format: "pdf")

@@ -33,4 +33,5 @@ class TimeEntry < ActiveRecord::Base
     me = Date.today.at_end_of_month
     TimeEntry.where(date: (mb..me)).sum("real_time")
   end
+
 end

@@ -10,8 +10,8 @@ TimeTrack::Application.configure do
   config.whiny_nils = true
 
   config.action_mailer.delivery_method = :letter_opener
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
