@@ -3,7 +3,6 @@
 require 'spec_helper.rb'
 
 describe User do
-  
   let(:user) { FactoryGirl.create :user }
 
   describe "#set_default_user_role" do
@@ -11,15 +10,15 @@ describe User do
   		it "returns role 'admin' and returns true" do
   		user.role = "admin"
   		user.set_default_user_role
-  		user.role.should eq("admin")      
-      end  
+  		user.role.should eq("admin")
+      end
     end
   	context "When user has been create , he has role == 'user' " do
   		it "returns role 'user' and returns true" do
   		        user.set_default_user_role
   		        user.role.should eq("user")
-      end  
-    end    
+      end
+    end
   end
 
   describe "#admin?" do
@@ -31,7 +30,7 @@ describe User do
   	end
   	context "When user is not admin " do
   		it "returns false" do
-  		  user.admin?.should be_false  	
+  		  user.admin?.should be_false
   		end
   		it "retutns false" do
   			user.role = "user"
@@ -51,7 +50,7 @@ describe User do
   	end
   	context "When user don`t read article" do
   		it "returns false" do
-  			user.read?(article).should be_false 
+  			user.read?(article).should be_false
   		end
   	end
   end

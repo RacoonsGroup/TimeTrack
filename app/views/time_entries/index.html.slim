@@ -21,7 +21,7 @@ table.table
         td= te.time_points
         td= te.status
         td= te.date
-        td = link_to "Edit", edit_time_entry_path(te) 
+        td = link_to "Edit", edit_time_entry_path(te)
         td = link_to "Delete", time_entry_path(te), method: :delete
 
 = paginate @time_entries

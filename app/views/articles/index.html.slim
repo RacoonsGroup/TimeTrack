@@ -4,11 +4,11 @@ h1 Articles
 table.table#articles
   thead
     tr
-      th 
-      th = sortable "title"  
-      th = sortable "importance" 
+      th
+      th = sortable "title"
+      th = sortable "importance"
       th  Short Description
-      th 
+      th
   tbody
     - collection.each do |art|
       tr
