@@ -9,7 +9,7 @@ class ReportMailer < ActionMailer::Base
                        template: 'report_mailer/report.pdf.slim')
     )
 
-    mail(:to => "admin@gmail.com", :subject => "RE raccons") do |format|
+    mail(:to => "graffzon@gmail.com", :subject => "RE raccons") do |format|
       format.html
     end
   end
