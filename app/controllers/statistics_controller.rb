@@ -19,8 +19,18 @@ class StatisticsController < ApplicationController
     @delivered_time = TimeEntry.in_date_range(@from_date,
                                               @to_date, user_id).
                                               sum(:time_points)
-
     # Will be removed in latest versions
     #@month_hours = TimeEntry.month_hours
   end
+  def report
+    @time_entries = TimeEntry.select { |te| te.created_at.day == Time.now.day }
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'cool_report', template: 'statistics/report.pdf.slim'
+      end
+    end
+  end
+
 end

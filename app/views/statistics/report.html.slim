@@ -1,0 +1,31 @@
+style
+  'table {
+  '  font-size:1.2em;
+  '}
+
+  'tr:nth-child(even) td {
+  '  background:CCCCFF;
+  '}
+
+  'tr td {
+  '  padding: 1px 3px;
+  '}
+
+h2 = Time.now.strftime("%d %b %y")
+
+table width="100%" cellspacing="0" cellpadding="0" border="1"
+  thead
+    tr
+      th User
+      th Task name
+      th Project name
+      th Real time
+      th Status
+  tbody
+    - @time_entries.each_with_index do |te, index|
+      tr
+        td= User.find(te.user_id).email
+        td= te.name
+        td= te.project.project_name
+        td= te.real_time
+        td= te.status
