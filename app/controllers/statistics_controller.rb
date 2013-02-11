@@ -28,7 +28,7 @@ class StatisticsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: 'cool_report'#, template: 'statistics/report.pdf.slim'
+        render pdf: "Report for #{Time.now.strftime("%d %b %y")}", template: 'report_mailer/report.pdf.slim'
       end
     end
   end
