@@ -28,7 +28,7 @@ class StatisticsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: 'cool_report', template: 'statistics/report.pdf.slim'
+        render pdf: 'cool_report'#, template: 'statistics/report.pdf.slim'
       end
     end
   end
