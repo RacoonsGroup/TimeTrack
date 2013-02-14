@@ -1,4 +1,3 @@
-require "/home/sergey/rails_projects/TimeTrack/app/support/reports/pdf_report.rb"
 
 class StatisticsController < ApplicationController
 
@@ -27,7 +26,7 @@ class StatisticsController < ApplicationController
 
   def download_pdf
     output = PdfReport.new.to_pdf
-    send_data output, :type => 'application/pdf', :filename => "Cowboy_PDF.pdf"
+    send_data output, :type => 'application/pdf', :filename => "#{Time.zone.now.strftime('%d %b %y')}"
   end
 
 end

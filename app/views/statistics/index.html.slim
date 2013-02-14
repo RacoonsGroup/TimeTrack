@@ -4,7 +4,7 @@
 /= render "/shared/statistics_progress_bar"
 
 / if current.user.can? :manage, TimeEntry
-/ = link_to "Report PDF (for today)", report_statistics_path(format: "pdf")
+= link_to "PDF отчёт" , download_pdf_statistics_path
 
 br
 

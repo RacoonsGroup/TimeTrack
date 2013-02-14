@@ -2,34 +2,43 @@
 
 class PdfReport < Prawn::Document
 
-   # ширина колонок
-  Widths = [200, 200, 100]
-  # заглавия колонок
-  Headers = ['Сотрудник', 'Задание', 'Проект', 'Время', 'Статус']
+  # ширина колонок
+  Widths = [150, 150, 100, 50, 70]
 
-  def row(date, customer_name, amount, pros)
-    row = [date, customer_name, amount, pros]
+  # заглавия колонок
+  Headers = %w[Сотрудник Задание Проект Время Статус]
+
+  def row(user, task, project, time, status)
+    row = [user, task, project, time, status]
     make_table([row]) do |t|
       t.column_widths = Widths
-      t.cells.style :borders => [:left, :right], :padding => 2
     end
   end
 
   def to_pdf
-    # привязываем шрифты
+    # Устанавливает руссий шрифт
+
     font_families.update(
       "Verdana" => {
-        :bold => "/home/sergey/tmp_fonts/verdanab.ttf",
-        :italic => "/home/sergey/tmp_fonts/verdanai.ttf",
-        :normal  => "/home/sergey/tmp_fonts/verdana.ttf" })
-    font "Verdana", :size => 10
-    text "Отчет за #{Time.zone.now.strftime('%b %Y')}", :size => 15, :style => :bold, :align => :center
-    move_down(18)
+          bold: "/home/sergey/tmp_fonts/verdanab.ttf",
+        italic: "/home/sergey/tmp_fonts/verdanai.ttf",
+        normal: "/home/sergey/tmp_fonts/verdana.ttf"
+      }
+    )
+    font "Verdana", size: 9
+
+    text "Отчет за #{Time.zone.now.strftime('%d %b %Y')}", size: 10, style: :bold, align: :left
+    move_down(20)
+    text "Racoons Group", size: 12, style: :bold, align: :center
+    move_down(20)
+
     # выборка записей
-    @time_entries = TimeEntry.select { |te| te.created_at.day == Time.now.day }
+    @time_entries = TimeEntry.select { |te| te.created_at.day == Time.zone.now.day }
+    @time_entries.sort! { | te1, te2 | User.find(te1.user_id).email <=> User.find(te2.user_id).email }
     data = []
     time_entr = @time_entries.each do |te|
       data << row(
+        User.find(te.user_id).email,
         te.name,
         te.project.project_name,
         te.real_time,
@@ -37,18 +46,20 @@ class PdfReport < Prawn::Document
       )
     end
 
-    head = make_table([Headers], :column_widths => Widths)
+    head = make_table([Headers], column_widths: Widths)
 
-    table([[head], *(data.map{|d| [d]})], :header => true, :row_colors => %w[cccccc ffffff]) do
-      row(0).style :background_color => '000000', :text_color => 'ffffff'
-      cells.style :borders => []
-end
-    # добавим время создания внизу страницы
+    table([[head], *(data.map{|d| [d]})], header: true) do
+      row(0).style background_color: 'CCCCFF', text_color: '993300'
+      #cells.style borders: []
+    end
+    # добавляет время создания внизу, в углу страницы
     creation_date = Time.zone.now.strftime("Отчет сгенерирован %e %b %Y в %H:%M")
     go_to_page(page_count)
     move_down(710)
-    text creation_date, :align => :right, :style => :italic, :size => 9
+    text creation_date, align: :right, style: :italic, size: 9
+
     render
+
   end
 
 end
