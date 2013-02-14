@@ -1,3 +1,5 @@
+require "/home/sergey/rails_projects/TimeTrack/app/support/reports/pdf_report.rb"
+
 class StatisticsController < ApplicationController
 
   def index
@@ -22,22 +24,10 @@ class StatisticsController < ApplicationController
     # Will be removed in latest versions
     #@month_hours = TimeEntry.month_hours
   end
-  def report
-    @time_entries = TimeEntry.select { |te| te.created_at.day == Time.now.day }
 
-    respond_to do |format|
-      format.html
-      format.pdf do
-        font_families.update(
-        "Verdana" => {
-        :bold => "/home/sergey/prawn_fonts/verdanab.ttf",
-        :italic => "/home/sergey/prawn_fonts/verdanai.ttf",
-        :normal  => "/home/sergey/prawn_fonts/verdana.ttf" })
-        font "Verdana", :size => 10
-
-        render pdf: "Report for #{Time.now.strftime("%d %b %y")}", template: 'report_mailer/report.pdf.slim'
-      end
-    end
+  def download_pdf
+    output = PdfReport.new.to_pdf
+    send_data output, :type => 'application/pdf', :filename => "Cowboy_PDF.pdf"
   end
 
 end

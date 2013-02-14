@@ -21,7 +21,8 @@ gem 'inherited_resources'
 
 gem "simple-navigation"
 gem 'whenever', require: false
-gem 'wicked_pdf'
+gem 'prawn'
+gem 'prawnto'
 
 
 group :assets do

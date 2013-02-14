@@ -14,7 +14,8 @@ TimeTrack::Application.routes.draw do
   root :to => 'dashboard#show'
 
   resources :statistics, only: [:index] do
-    get :report , on: :collection
+    get :download_pdf , on: :collection
+
   end
 
   namespace :api do
