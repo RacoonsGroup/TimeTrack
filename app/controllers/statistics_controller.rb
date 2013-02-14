@@ -28,6 +28,13 @@ class StatisticsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
+        font_families.update(
+        "Verdana" => {
+        :bold => "/home/sergey/prawn_fonts/verdanab.ttf",
+        :italic => "/home/sergey/prawn_fonts/verdanai.ttf",
+        :normal  => "/home/sergey/prawn_fonts/verdana.ttf" })
+        font "Verdana", :size => 10
+
         render pdf: "Report for #{Time.now.strftime("%d %b %y")}", template: 'report_mailer/report.pdf.slim'
       end
     end

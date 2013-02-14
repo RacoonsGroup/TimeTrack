@@ -2,7 +2,10 @@
 
 / Will be permanently removed in latest versions
 /= render "/shared/statistics_progress_bar"
+
+/ if current.user.can? :manage, TimeEntry
 = link_to "Report PDF (for today)", report_statistics_path(format: "pdf")
+
 br
 
 table class="table" id="time_entries"
