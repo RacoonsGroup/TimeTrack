@@ -17,3 +17,14 @@ jQuery ->
         jQuery(element).attr('disabled', true)
     )
   )
+
+  $('.link_to_pdf').bind('click', ->
+    from = $('#from_date').val()
+    to = $('#to_date').val()
+    link = $(this).attr('href')
+    if(from != '' && to != '')
+      window.location = link + '?from=' + from + '&to=' + to
+    else
+      window.location = link
+    return false
+  )

@@ -15,7 +15,7 @@ class PdfReport < Prawn::Document
     end
   end
 
-  def to_pdf
+  def to_pdf(one, two)
     # Устанавливает руссий шрифт
 
     font_families.update(
@@ -26,6 +26,9 @@ class PdfReport < Prawn::Document
       }
     )
     font "Verdana", size: 9
+
+    text "Well   :#{one}"
+    text "Cowboy :#{two}"
 
     text "Отчет за #{Time.zone.now.strftime('%d %b %Y')}", size: 10, style: :bold, align: :left
     move_down(20)

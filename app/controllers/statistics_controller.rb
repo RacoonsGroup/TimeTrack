@@ -2,6 +2,8 @@
 class StatisticsController < ApplicationController
 
   def index
+
+    #render text: params
     user_id = current_user.admin? ? ( params[:user_id] || current_user.id ) : current_user.id
 
     @from_date = params[:from_date]
@@ -25,7 +27,9 @@ class StatisticsController < ApplicationController
   end
 
   def download_pdf
-    output = PdfReport.new.to_pdf
+    @from = params[:from]
+    @to = params[:to]
+    output = PdfReport.new.to_pdf(@from, @to)
     send_data output, :type => 'application/pdf', :filename => "#{Time.zone.now.strftime('%d %b %y')}"
   end
 
