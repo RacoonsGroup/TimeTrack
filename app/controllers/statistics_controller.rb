@@ -27,9 +27,7 @@ class StatisticsController < ApplicationController
   end
 
   def download_pdf
-    @from = params[:from]
-    @to = params[:to]
-    output = PdfReport.new.to_pdf(@from, @to)
+    output = PdfReport.new.to_pdf(params[:from], params[:to])
     send_data output, :type => 'application/pdf', :filename => "#{Time.zone.now.strftime('%d %b %y')}"
   end
 

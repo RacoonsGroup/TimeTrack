@@ -15,7 +15,7 @@ class PdfReport < Prawn::Document
     end
   end
 
-  def to_pdf(one, two)
+  def to_pdf(from, to)
     # Устанавливает руссий шрифт
 
     font_families.update(
@@ -27,8 +27,8 @@ class PdfReport < Prawn::Document
     )
     font "Verdana", size: 9
 
-    text "Well   :#{one}"
-    text "Cowboy :#{two}"
+    text "From   :#{from}"
+    text "To :#{to}"
 
     text "Отчет за #{Time.zone.now.strftime('%d %b %Y')}", size: 10, style: :bold, align: :left
     move_down(20)
@@ -36,7 +36,13 @@ class PdfReport < Prawn::Document
     move_down(20)
 
     # выборка записей
-    @time_entries = TimeEntry.select { |te| te.created_at.day == Time.zone.now.day }
+    if from == nil && to == nil
+      @time_entries = TimeEntry.select { |te| te.created_at.day == Time.zone.now.day }
+    else
+      #@time_entries = TimeEntry.select { |te| te.created_at.day == Time.zone.now.day }
+      @time_entries = TimeEntry.select { |te| from.to_time.day <= te.date.day && to.to_time.day >= te.date.day  }
+    end
+
     @time_entries.sort! { | te1, te2 | User.find(te1.user_id).email <=> User.find(te2.user_id).email }
     data = []
     time_entr = @time_entries.each do |te|
