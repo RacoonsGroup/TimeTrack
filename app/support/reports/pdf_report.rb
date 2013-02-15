@@ -20,9 +20,9 @@ class PdfReport < Prawn::Document
 
     font_families.update(
       "Verdana" => {
-          bold: "/home/sergey/tmp_fonts/verdanab.ttf",
-        italic: "/home/sergey/tmp_fonts/verdanai.ttf",
-        normal: "/home/sergey/tmp_fonts/verdana.ttf"
+          bold: "#{Rails.root}/app/assets/fonts/verdana/verdanab.ttf",
+        italic: "#{Rails.root}/app/assets/fonts/verdana/verdanai.ttf",
+        normal: "#{Rails.root}/app/assets/fonts/verdana/verdana.ttf"
       }
     )
     font "Verdana", size: 9
