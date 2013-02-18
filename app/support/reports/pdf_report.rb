@@ -27,21 +27,20 @@ class PdfReport < Prawn::Document
     )
     font "Verdana", size: 9
 
-    text "From   :#{from}"
-    text "To :#{to}"
+    # выборка записей
+    if from == nil && to == nil
+      text "Отчет за #{Time.zone.now.strftime('%d %b %Y')}", size: 10, style: :bold, align: :left
+      @time_entries = TimeEntry.select { |te| te.date.day == Time.zone.now.day }
+    else
+      text "Отчет за период с #{from} по #{to}", size: 10, style: :bold, align: :left
+      @time_entries = TimeEntry.select {
+        |te| from.to_time.day <= te.date.day && to.to_time.day >= te.date.day
+      }
+    end
 
-    text "Отчет за #{Time.zone.now.strftime('%d %b %Y')}", size: 10, style: :bold, align: :left
     move_down(20)
     text "Racoons Group", size: 12, style: :bold, align: :center
     move_down(20)
-
-    # выборка записей
-    if from == nil && to == nil
-      @time_entries = TimeEntry.select { |te| te.created_at.day == Time.zone.now.day }
-    else
-      #@time_entries = TimeEntry.select { |te| te.created_at.day == Time.zone.now.day }
-      @time_entries = TimeEntry.select { |te| from.to_time.day <= te.date.day && to.to_time.day >= te.date.day  }
-    end
 
     @time_entries.sort! { | te1, te2 | User.find(te1.user_id).email <=> User.find(te2.user_id).email }
     data = []
