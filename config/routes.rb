@@ -15,7 +15,6 @@ TimeTrack::Application.routes.draw do
 
   resources :statistics, only: [:index] do
     get :download_pdf , on: :collection
-
   end
 
   namespace :api do

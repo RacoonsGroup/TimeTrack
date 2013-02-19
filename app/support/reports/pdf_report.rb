@@ -8,8 +8,8 @@ class PdfReport < Prawn::Document
   # заглавия колонок
   Headers = %w[Сотрудник Задание Проект Время Статус]
 
-  def row(user, task, project, time, status)
-    row = [user, task, project, time, status]
+  def row(email = "Undef", task, project, time, status)
+    row = [email, task, project, time, status]
     make_table([row]) do |t|
       t.column_widths = Widths
     end
@@ -42,16 +42,21 @@ class PdfReport < Prawn::Document
     text "Racoons Group", size: 12, style: :bold, align: :center
     move_down(20)
 
-    @time_entries.sort! { | te1, te2 | User.find(te1.user_id).email <=> User.find(te2.user_id).email }
+    #@time_entries.sort! { | te1, te2 | User.find(te1.user_id).email <=> User.find(te2.user_id).email }
     data = []
     time_entr = @time_entries.each do |te|
-      data << row(
-        User.find(te.user_id).email,
+        email = "Undefined user"
+        if User.where(id: te.user_id).exists?
+          email = User.find(te.user_id).email
+        end
+
+         data << row(
+        email,
         te.name,
         te.project.project_name,
         te.real_time,
         te.status
-      )
+        )
     end
 
     head = make_table([Headers], column_widths: Widths)
