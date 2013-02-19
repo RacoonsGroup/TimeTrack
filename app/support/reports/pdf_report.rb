@@ -50,7 +50,7 @@ class PdfReport < Prawn::Document
           email = User.find(te.user_id).email
         end
 
-         data << row(
+        data << row(
         email,
         te.name,
         te.project.project_name,
@@ -63,7 +63,6 @@ class PdfReport < Prawn::Document
 
     table([[head], *(data.map{|d| [d]})], header: true) do
       row(0).style background_color: 'CCCCFF', text_color: '993300'
-      #cells.style borders: []
     end
     # добавляет время создания внизу, в углу страницы
     creation_date = Time.zone.now.strftime("Отчет сгенерирован %e %b %Y в %H:%M")

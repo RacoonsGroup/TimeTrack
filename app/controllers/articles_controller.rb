@@ -21,7 +21,7 @@ class ArticlesController < InheritedResources::Base
       if params[:sort]
         @articles = Article.order(params[:sort] + " " + params[:direction])
       else
-        @articles = Article.all
+        @articles = Article.order('created_at desc')
       end
       # @articles ||= end_of_association_chain.page(params[:page]).per(10)
     end
