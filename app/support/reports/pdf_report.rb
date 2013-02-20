@@ -53,7 +53,7 @@ class PdfReport < Prawn::Document
         data << row(
         email,
         te.name,
-        te.project.project_name,
+        te.project_name,
         te.real_time,
         te.status
         )
