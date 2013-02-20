@@ -20,10 +20,10 @@ gem 'rails_admin'
 gem 'inherited_resources'
 
 gem "simple-navigation"
+
 gem 'whenever', require: false
 gem 'prawn'
 gem 'prawnto'
-
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

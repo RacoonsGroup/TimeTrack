@@ -13,25 +13,29 @@ class TimeEntry < ActiveRecord::Base
   validates :time_points, numericality: true, allow_blank: true
   validates :date, presence: true
 
+  class << self
+    def in_date_range(from, to, user_id)
+      te = TimeEntry.order('date desc')
+      unless user_id == ''
+        te = te.where(user_id: user_id)
+      end
+      if from.present?
+        te = te.where("date >= ?", from.to_date)
+      end
+      if to.present?
+        te = te.where("date <= ?", to.to_date)
+      end
+      te
+    end
 
-  def self.in_date_range(from, to, user_id)
-    te = TimeEntry.order('date desc')
-    unless user_id == ''
-      te = te.where(user_id: user_id)
+    def month_hours
+      mb = Date.today.at_beginning_of_month
+      me = Date.today.at_end_of_month
+      TimeEntry.where(date: (mb..me)).sum("real_time")
     end
-    if from.present?
-      te = te.where("date >= ?", from.to_date)
-    end
-    if to.present?
-      te = te.where("date <= ?", to.to_date)
-    end
-    te
   end
 
-  def self.month_hours
-    mb = Date.today.at_beginning_of_month
-    me = Date.today.at_end_of_month
-    TimeEntry.where(date: (mb..me)).sum("real_time")
+  def project_name
+    project_id ? project.project_name : project
   end
-
 end
