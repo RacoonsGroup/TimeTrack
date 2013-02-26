@@ -1,5 +1,7 @@
 h1 Articles
-= link_to "Add new article", new_article_path
+
+= render "/shared/search_form"
+= link_to "New article", new_article_path
 
 table.table#articles
   thead

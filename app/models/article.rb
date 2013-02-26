@@ -6,6 +6,16 @@ class Article < ActiveRecord::Base
   validates :title, :short_description, :importance, :url, presence: true
   validates :importance, inclusion: { in: 1..5 }
 
+  def self.text_search(query)
+    if query.present?
+      # rank = <<-RANK
+      #   ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)})) +
+      #   ts_rank(to_tsvector(short_description), plainto_tsquery(#{sanitize(query)}))
+      # RANK
+      where("title @@ :q or short_description @@ :q or url @@ :q", q: query)
+    end
+  end
+
   def read_by? user
     users.where(id: user.id).any?
   end

@@ -17,7 +17,6 @@ class PdfReport < Prawn::Document
 
   def to_pdf(from, to)
     # Устанавливает руссий шрифт
-
     font_families.update(
       "Verdana" => {
           bold: "#{Rails.root}/app/assets/fonts/verdana/verdanab.ttf",
