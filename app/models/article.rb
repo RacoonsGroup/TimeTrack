@@ -12,7 +12,7 @@ class Article < ActiveRecord::Base
       #   ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)})) +
       #   ts_rank(to_tsvector(short_description), plainto_tsquery(#{sanitize(query)}))
       # RANK
-      where("title @@ :q or short_description @@ :q or url @@ :q", q: query)
+      where("to_tsvector(title) @@ plainto_tsquery(:q) or to_tsvector(short_description) @@ plainto_tsquery(:q) ", q: query)
     end
   end
 
