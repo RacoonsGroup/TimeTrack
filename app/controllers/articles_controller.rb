@@ -20,7 +20,7 @@ class ArticlesController < InheritedResources::Base
     def collection
       if params[:sort]
         @articles = Article.order(params[:sort] + " " + params[:direction])
-      elsif params[:query]
+      elsif params[:query] && params[:query] != ""
         @articles = Article.text_search(params[:query])#.page(params[:page]).per_page(5)
       else
         @articles = Article.order('created_at desc')
