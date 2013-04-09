@@ -4,8 +4,8 @@ TimeTrack::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :projects
-  resources :time_entries do
-  end
+  resources :notifications
+  resources :time_entries
 
   resources :articles, only: [:index, :new, :create] do
     member { get :toggle_read }

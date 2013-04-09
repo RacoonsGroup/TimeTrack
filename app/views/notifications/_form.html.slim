@@ -1,0 +1,6 @@
+= simple_form_for resource, html: {class: 'form-horizontal'} do |f|
+  = f.input :title
+  = f.input :start_date, :input_html => { :value => "#{Date.today}" }
+  = f.input :end_date, :input_html => { :value => "#{Date.today}" }
+  = f.input :description, input_html: {cols: 100, rows: 5}
+  = f.submit 'Сохранить оповещение', class: 'btn btn-primary'

@@ -1,0 +1,11 @@
+h1 Добавлено новое оповещение!
+
+ul
+  li Название: #{@notify.title}
+  li Описание: #{@notify.description}
+
+br
+
+= link_to "Смотреть все оповещения", articles_url
+br
+= link_to "Ссылка на оповещение", article_url(@notify)

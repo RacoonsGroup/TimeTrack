@@ -53,6 +53,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :MyTimeEntries, 'My time entries', time_entries_path
     primary.item :Articles, 'Articles', articles_path
     primary.item :Statistics, 'Statistics', "/statistics"
+    primary.item :Statistics, 'Notifications', notifications_path
 
 
     # Add an item which has a sub navigation (same params, but with block)

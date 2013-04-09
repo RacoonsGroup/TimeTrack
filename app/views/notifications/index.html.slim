@@ -1,0 +1,19 @@
+h1 Текущие оповещения
+= link_to "Новое оповещение", new_notification_path if can?(:create, Notification)
+
+
+table.table
+  thead
+    tr
+      th Название
+      th Дата начала
+      th Дата окончания
+      th
+  tbody
+    - @notifications.each do |n|
+      tr
+        td= link_to n.title, notification_path(n)
+        td= n.start_date
+        td= n.end_date
+        td = link_to "Edit", edit_notification_path(n)
+        td = link_to "Delete", notification_path(n), method: :delete if can?(:destroy, Notification)
