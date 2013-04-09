@@ -6,6 +6,6 @@ class Notification < ActiveRecord::Base
   after_create :notify_users
 
   def notify_users
-    NotifyMailer.new_notify(self)
+    NotifyMailer.new_notify(self).deliver
   end
 end
