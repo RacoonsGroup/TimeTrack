@@ -8,6 +8,7 @@ class Ability
         can :access, :rails_admin
         can :dashboard
       else
+        can :read, Notification
         can :create, :time_entry
         can :manage, TimeEntry, user_id: @user.id if @user
         cannot :manage, :all
