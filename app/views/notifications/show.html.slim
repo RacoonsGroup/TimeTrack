@@ -2,4 +2,6 @@ h1 Оповещение #{resource.title}
 
 dl.dl-horizontal
   dt Описание
-  dd= resource.description
+  dd
+    pre
+      = resource.description
