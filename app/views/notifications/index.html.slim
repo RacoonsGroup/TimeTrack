@@ -15,5 +15,5 @@ table.table
         td= link_to n.title, notification_path(n)
         td= n.start_date
         td= n.end_date
-        td = link_to "Edit", edit_notification_path(n)
+        td = link_to "Edit", edit_notification_path(n) if can?(:update, Notification)
         td = link_to "Delete", notification_path(n), method: :delete if can?(:destroy, Notification)
