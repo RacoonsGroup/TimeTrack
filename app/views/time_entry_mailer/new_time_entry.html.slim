@@ -2,7 +2,7 @@ h1
   | Пользователь с почтой #{@user.email} создал TimeEntry
 ul 
   li Имя: #{@time_entry.name}
-  li Проект: #{@time_entry.project}
+  li Проект: #{@time_entry.project.project_name}
   li Реальное время: #{@time_entry.real_time} 
   li Заделиверенное время: #{@time_entry.time_points}
   li Дата: #{@time_entry.date}
