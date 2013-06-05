@@ -15,10 +15,13 @@ class TimeEntry < ActiveRecord::Base
   validates :url, presence: true
 
   class << self
-    def in_date_range(from, to, user_id)
+    def in_date_range(from, to, user_id, project_id)
       te = TimeEntry.order('date desc')
       unless user_id == ''
         te = te.where(user_id: user_id)
+      end
+      unless project_id == ''
+        te = te.where(project_id: project_id)
       end
       if from.present?
         te = te.where("date >= ?", from.to_date)

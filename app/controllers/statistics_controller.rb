@@ -8,19 +8,25 @@ class StatisticsController < ApplicationController
 
     @from_date = params[:from_date]
     @to_date = params[:to_date]
-    @time_entries = TimeEntry.in_date_range(@from_date,
-                                            @to_date, user_id).
+
+    project_id = params[:project_id]
+
+    @time_entries = TimeEntry.in_date_range(@from_date, @to_date,
+                                            user_id, project_id).
                                             page(params[:page])
     if current_user.admin?
       @users = User.all
       @users.unshift(User.new(email: "all"))
     end
 
-    @real_time = TimeEntry.in_date_range(@from_date,
-                                         @to_date, user_id).
+    @projects=Project.all
+    @projects.unshift(Project.new(project_name: "all"))
+
+    @real_time = TimeEntry.in_date_range(@from_date, @to_date,
+                                         user_id, project_id).
                                          sum(:real_time)
-    @delivered_time = TimeEntry.in_date_range(@from_date,
-                                              @to_date, user_id).
+    @delivered_time = TimeEntry.in_date_range(@from_date, @to_date,
+                                              user_id, project_id).
                                               sum(:time_points)
     # Will be removed in latest versions
     #@month_hours = TimeEntry.month_hours
