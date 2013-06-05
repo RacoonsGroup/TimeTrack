@@ -10,10 +10,12 @@ class StatisticsController < ApplicationController
     @to_date = params[:to_date]
 
     project_id = params[:project_id]
+    
+    per_page= params[:per] ? params[:per].to_i : 25
 
     @time_entries = TimeEntry.in_date_range(@from_date, @to_date,
                                             user_id, project_id).
-                                            page(params[:page])
+                                            page(params[:page]).per(per_page)
     if current_user.admin?
       @users = User.all
       @users.unshift(User.new(email: "all"))

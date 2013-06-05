@@ -31,3 +31,9 @@ table class="table" id="time_entries"
         td = link_to "Delete", time_entry_path(te), method: :delete
 
 = paginate @time_entries
+
+='link_to 25, url_for(params.merge({per: 25, page:1}))
+'|
+='link_to 50, url_for(params.merge({per: 50, page:1}))
+'|
+='link_to 100, url_for(params.merge({per: 100, page:1}))
