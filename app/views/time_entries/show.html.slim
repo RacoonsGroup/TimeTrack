@@ -2,19 +2,19 @@ h1 Show my Time Entry
 
 dl.dl-horizontal
   dt Task Name
-  dd= resource.name
+  dd= @time_entry.name
 
   dt Project Name
-  dd= resource.project
+  dd= @time_entry.project.project_name
 
   dt Real Time
-  dd= resource.real_time
+  dd= @time_entry.real_time
 
   dt Delivered time
-  dd= resource.time_points
+  dd= @time_entry.time_points
 
   dt Description
-  dd= resource.description
+  dd= @time_entry.description
 
 = button_to 'Destroy', time_entry_path(resource), method: :delete, confirm: 'Are you sure?', class: "btn btn-danger"
 = button_to 'Edit', edit_time_entry_path(resource), method: :get, class: "btn btn-primary"
