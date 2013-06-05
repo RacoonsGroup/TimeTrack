@@ -3,11 +3,7 @@ class TimeEntriesController < InheritedResources::Base
   actions :all
   
   def index
-    if can?(:manage,:time_entries)
-      @time_entries= Kaminari.paginate_array(TimeEntry.all).page(params[:page])
-    else
-      index!{ collection_url }
-    end
+    index!{ collection_url }
   end
 
   def show
@@ -58,7 +54,7 @@ class TimeEntriesController < InheritedResources::Base
       destroy!{collection_url}
     end
   end
-  
+
   protected
     def begin_of_association_chain
       current_user
