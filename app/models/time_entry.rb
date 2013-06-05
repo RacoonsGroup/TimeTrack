@@ -12,7 +12,7 @@ class TimeEntry < ActiveRecord::Base
   validates :status, inclusion: { in: STATUSES }
   validates :time_points, numericality: true, allow_blank: true
   validates :date, presence: true
-  validates :url, presence: true
+
 
   class << self
     def in_date_range(from, to, user_id, project_id)
