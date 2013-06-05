@@ -1,6 +1,7 @@
 = simple_form_for resource, html: {class: 'form-horizontal'} do |f|
   = f.input :name
   = f.association :project , label_method: :project_name
+  = f.input :url, placeholder: 'http://example.com'
   = f.input :date, :input_html => { :value => "#{Date.today}" }
   = f.input :status, collection: TimeEntry::STATUSES
   = f.input :real_time, as: :string

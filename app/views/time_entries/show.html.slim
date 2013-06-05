@@ -6,6 +6,9 @@ dl.dl-horizontal
 
   dt Project Name
   dd= @time_entry.project.project_name
+  
+  dt Url
+  dd= link_to @time_entry.url, @time_entry.url
 
   dt Real Time
   dd= @time_entry.real_time

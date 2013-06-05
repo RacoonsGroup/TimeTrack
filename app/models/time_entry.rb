@@ -1,7 +1,7 @@
 class TimeEntry < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  attr_accessible :description, :name, :project, :real_time, :status, :time_points, :date , :project_id
+  attr_accessible :description, :name, :project, :real_time, :status, :time_points, :date , :project_id, :url
 
   STATUSES = %w(finished processing)
 
@@ -12,6 +12,7 @@ class TimeEntry < ActiveRecord::Base
   validates :status, inclusion: { in: STATUSES }
   validates :time_points, numericality: true, allow_blank: true
   validates :date, presence: true
+  validates :url, presence: true
 
   class << self
     def in_date_range(from, to, user_id)
