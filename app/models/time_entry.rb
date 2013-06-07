@@ -15,19 +15,25 @@ class TimeEntry < ActiveRecord::Base
 
 
   class << self
-    def in_date_range(from, to, user_id, project_id)
+    def in_range(user,params)
       te = TimeEntry.order('date desc')
-      unless user_id == ''
+      
+      user_id = user.admin? ? ( params[:user_id] || user.id ) : user.id
+      
+      if user_id.present?
         te = te.where(user_id: user_id)
       end
-      unless project_id == ''
-        te = te.where(project_id: project_id)
+
+      if params[:project_id].present?
+        te = te.where(project_id: params[:project_id])
       end
-      if from.present?
-        te = te.where("date >= ?", from.to_date)
+
+      if params[:from_date].present?
+        te = te.where("date >= ?", params[:from_date].to_date)
       end
-      if to.present?
-        te = te.where("date <= ?", to.to_date)
+
+      if params[:to_date].present?
+        te = te.where("date <= ?", params[:to_date].to_date)
       end
       te
     end
