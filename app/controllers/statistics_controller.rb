@@ -8,6 +8,9 @@ class StatisticsController < ApplicationController
     @real_time = @time_entries.sum(:real_time)
     @delivered_time = @time_entries.sum(:time_points)
 
+    @selected_user = params[:user_id]
+    @selected_project = params[:project_id]
+
 
     @from_date = params[:from_date]
     @to_date = params[:to_date]
