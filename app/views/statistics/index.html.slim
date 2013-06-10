@@ -19,7 +19,7 @@ table class="table" id="time_entries"
       th Date
       th
   tbody
-    - @time_entries.each do |te|
+    - @presenter.time_entries.each do |te|
       tr
         td = link_to te.name, time_entry_path(te)
         td = te.project_name
@@ -30,7 +30,7 @@ table class="table" id="time_entries"
         td = link_to "Edit", edit_time_entry_path(te)
         td = link_to "Delete", time_entry_path(te), method: :delete
 
-= paginate @time_entries
+= paginate @presenter.time_entries
 
 ='link_to 25, url_for(params.merge({per: 25, page:1}))
 '|
