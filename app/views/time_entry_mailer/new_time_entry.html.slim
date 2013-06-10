@@ -6,5 +6,6 @@ ul
   li Реальное время: #{@time_entry.real_time} 
   li Заделиверенное время: #{@time_entry.time_points}
   li Дата: #{@time_entry.date}
+  li Ссылка: #{link_to @time_entry.url , @time_entry.url}
 br
 = link_to @time_entry.name, time_entry_url(@time_entry)
