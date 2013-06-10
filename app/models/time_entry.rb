@@ -15,10 +15,8 @@ class TimeEntry < ActiveRecord::Base
 
 
   class << self
-    def in_range(user,params)
+    def in_range(user_id,params)
       te = self.order('date desc')
-
-      user_id = user.admin? ? ( params[:user_id] || user.id ) : user.id
 
       if user_id.present?
         te = te.where(user_id: user_id)
