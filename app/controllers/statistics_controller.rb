@@ -2,7 +2,7 @@ class StatisticsController < ApplicationController
 
   def index
     
-    @presenter = StatisticsPresenter.new(current_user, params)
+    @presenter = current_user.admin? ? StatisticsAdminPresenter.new(current_user.id, params) : StatisticsPresenter.new(current_user.id,params)
 
     # Will be removed in latest versions
     #@month_hours = TimeEntry.month_hours

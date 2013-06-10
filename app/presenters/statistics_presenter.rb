@@ -1,36 +1,21 @@
 class StatisticsPresenter
   
-  def initialize(user, params)
+  def initialize(user_id, params)
     @params = params
-    @admin = user.admin?
 
-    user_id = user.admin? ? ( params[:user_id] || user.id ) : user.id
-    @time_entries = StatisticsFilter.new.filter(user_id,params)
-  end
-
-  def selected_user
-    if @admin
-      selected_user = @params[:user_id]
-    end
+    @time_entries = StatisticsFilter.new(user_id,params)
   end
 
   def selected_project
-    selected_project = @params[:project_id]
+    @params[:project_id]
   end
 
   def from_date
-    from_date = @params[:from_date]
+    @params[:from_date]
   end
 
   def to_date
-    to_date = @params[:to_date]
-  end
-
-  def users
-    if @admin
-      users = User.all
-      users.unshift(User.new(email: "all"))
-    end
+    @params[:to_date]
   end
 
   def projects
@@ -40,15 +25,15 @@ class StatisticsPresenter
 
   def time_entries
     per_page = @params[:per] ? @params[:per].to_i : 25
-    Kaminari.paginate_array(@time_entries).page(@params[:page]).per(per_page)
+    Kaminari.paginate_array(@time_entries.filter).page(@params[:page]).per(per_page)
   end
 
   def real_time
-    real_time = @time_entries.sum(:real_time)
+    @time_entries.real_time
   end
 
   def delivered_time
-    delivered_time = @time_entries.sum(:time_points)
+    @time_entries.time_points
   end
 
 end
