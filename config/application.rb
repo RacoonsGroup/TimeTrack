@@ -17,6 +17,7 @@ module TimeTrack
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{Rails.root}/app/support/reports)
+    config.autoload_paths += %W(#{Rails.root}/app/support/filters)
     #config.autoload_paths << "#{Rails.root}/app/support/reports"
 
     # Only load the plugins named here, in the order given (default is alphabetical).

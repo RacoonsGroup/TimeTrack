@@ -5,8 +5,7 @@ class StatisticsPresenter
     @admin = user.admin?
 
     user_id = user.admin? ? ( params[:user_id] || user.id ) : user.id
-    per_page = @params[:per] ? @params[:per].to_i : 25
-    @time_entries = TimeEntry.in_range(user_id,params).page(params[:page]).per(per_page)
+    @time_entries = StatisticsFilter.new.filter(user_id,params)
   end
 
   def selected_user
@@ -40,7 +39,8 @@ class StatisticsPresenter
   end
 
   def time_entries
-    @time_entries
+    per_page = @params[:per] ? @params[:per].to_i : 25
+    Kaminari.paginate_array(@time_entries).page(@params[:page]).per(per_page)
   end
 
   def real_time
