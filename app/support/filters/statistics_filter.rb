@@ -12,6 +12,9 @@ class StatisticsFilter
 
     if params[:project_id].present?
       te = te.where(project_id: params[:project_id])
+    else
+      pr=ProjectsFilter.new.filter
+      te = te.where(project_id: pr)
     end
 
     if params[:from_date].present?

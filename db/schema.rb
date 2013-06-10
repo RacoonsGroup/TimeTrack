@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605095220) do
+ActiveRecord::Schema.define(:version => 20130610120639) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130605095220) do
     t.string   "project_description"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.boolean  "disable"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

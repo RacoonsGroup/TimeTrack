@@ -34,7 +34,7 @@ class StatisticsPresenter
   end
 
   def projects
-    projects=Project.all
+    projects = ProjectsFilter.new.filter
     projects.unshift(Project.new(project_name: "all"))
   end
 
