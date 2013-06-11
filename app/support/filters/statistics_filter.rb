@@ -39,7 +39,7 @@ class StatisticsFilter
     end
 
     def by_date(te)
-     if @params[:from_date].present?
+      if @params[:from_date].present?
         te = te.where("date >= ?", @params[:from_date].to_date)
       end
 
