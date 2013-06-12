@@ -13,6 +13,8 @@ class TimeEntry < ActiveRecord::Base
   validates :time_points, numericality: true, allow_blank: true
   validates :date, presence: true
 
+  delegate :email, to: :user, prefix: true
+
 
   class << self
     def month_hours
