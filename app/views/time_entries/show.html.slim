@@ -1,6 +1,8 @@
 h1 Show my Time Entry
 
-= link_to 'Back', :back if request.referrer[-11.. -1] == statistics_path
+-if request.referrer
+  -if request.referrer.include?(statistics_path)
+    = link_to 'Back', :back 
 
 dl.dl-horizontal
   
