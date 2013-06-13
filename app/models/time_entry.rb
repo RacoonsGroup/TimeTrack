@@ -13,7 +13,7 @@ class TimeEntry < ActiveRecord::Base
   validates :time_points, numericality: true, allow_blank: true
   validates :date, presence: true
 
-  delegate :email, to: :user, prefix: true
+  delegate :email, to: :user, prefix: true, allow_nil: true
 
 
   class << self
