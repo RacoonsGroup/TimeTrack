@@ -12,6 +12,10 @@ dl.dl-horizontal
   dt Project Name
   dd= @time_entry.project.project_name
   
+  - if current_user.admin?
+    dt User
+    dd= @time_entry.user.email
+
   dt Url
   dd= link_to @time_entry.url, @time_entry.url
 
