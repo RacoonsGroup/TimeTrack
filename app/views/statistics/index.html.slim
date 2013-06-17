@@ -17,6 +17,7 @@ table class="table" id="time_entries"
       th Delivered time (#{@presenter.delivered_time})
       th Status
       th Date
+      th Payable
       - if current_user.admin?
         th User
       th
@@ -29,6 +30,7 @@ table class="table" id="time_entries"
         td = te.time_points
         td = te.status
         td = te.date
+        td = te.payable
         - if current_user.admin?
           td = te.user_email
         td = link_to "Edit", edit_time_entry_path(te)

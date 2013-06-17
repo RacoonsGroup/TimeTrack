@@ -5,10 +5,14 @@
   = f.input :date, :input_html => { :value => "#{Date.today}" }
   = f.input :status, collection: TimeEntry::STATUSES
   = f.input :real_time, as: :string
-  -if (params[:action] == 'new') or current_user.admin?
-  	= f.input :time_points
-  -else
-  	= f.input :time_points, disabled: true
+  - if current_user.admin?
+    =f.input :payable
+  - else
+    =f.input :payable, disabled: true
+  - if (params[:action] == 'new') or current_user.admin?
+    = f.input :time_points
+  - else
+    = f.input :time_points, disabled: true
   = f.input :description, input_html: {cols: 100, rows: 5}
   = f.submit 'Save time entry', class: 'btn btn-primary'
   
