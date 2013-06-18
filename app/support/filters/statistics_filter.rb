@@ -11,6 +11,7 @@ class StatisticsFilter
     te=by_user(te)
     te=by_project(te)
     te=by_date(te)
+    te=by_payable(te)
 
     te
   end
@@ -24,6 +25,12 @@ class StatisticsFilter
   end
 
   protected
+    def by_payable(te)
+      if @params[:payable].present?
+        te= @params[:payable] == 'nil' ?  te.where(payable: nil) : te.where(payable: @params[:payable])
+      end
+      te
+    end
     def by_user(te)
       if @user_id.present?
         te = te.where(user_id: @user_id)

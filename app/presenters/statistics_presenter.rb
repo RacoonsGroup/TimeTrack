@@ -23,6 +23,13 @@ class StatisticsPresenter
     projects.unshift(Project.new(project_name: "all"))
   end
 
+  def payable
+    payable = [['All',''], ['True', :true], ['False', :false], ['Nil', :nil]]    
+  end
+  def selected_payable
+    @params[:payable]
+  end
+
   def time_entries
     per_page = @params[:per] ? @params[:per].to_i : 25
     Kaminari.paginate_array(@time_entries.filter).page(@params[:page]).per(per_page)

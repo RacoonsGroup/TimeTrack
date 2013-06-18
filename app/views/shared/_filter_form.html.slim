@@ -11,4 +11,7 @@
   'Project:
   =' select_tag :project_id, options_from_collection_for_select(@presenter.projects, :id, :project_name, selected: @presenter.selected_project), include_blank:true
 
+  'Payable:
+  =' select_tag :payable, options_for_select(@presenter.payable, selected:@presenter.selected_payable), include_blank:true
+
   = submit_tag 'Filter'
