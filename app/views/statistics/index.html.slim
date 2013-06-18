@@ -1,9 +1,12 @@
+=content_for :sidebar do
+  =render "/shared/statistics"
+
+
 = render "/shared/filter_form"
 
 / Will be permanently removed in latest versions
 /= render "/shared/statistics_progress_bar"
 
-=render "/shared/statistics"
 
 - if can? :manage, :all
   = link_to "PDF отчёт" , download_pdf_statistics_path, class: 'link_to_pdf'

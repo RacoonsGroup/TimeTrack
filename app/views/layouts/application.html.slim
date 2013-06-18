@@ -46,6 +46,7 @@ html lang="en"
               li.nav-header Sidebar
             = render_navigation(:context => "sidebar")
 
+          = yield :sidebar
 
         .span9
           = render 'shared/messages'
