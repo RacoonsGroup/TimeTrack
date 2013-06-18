@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  belongs_to :qualification
+  has_many :time_entries
+  has_and_belongs_to_many :articles  
+
   ROLE = %w(user admin)
 
   before_create :set_default_user_role
@@ -6,10 +10,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :qualification_id
 
-  has_many :time_entries
-  has_and_belongs_to_many :articles
 
   def set_default_user_role
     self.role = User.default_role unless role
