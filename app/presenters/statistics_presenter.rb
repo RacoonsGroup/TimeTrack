@@ -18,7 +18,7 @@ class StatisticsPresenter
     @params[:to_date]
   end
 
-  def statistics
+  def payment_type_statistics
     array = @time_entries.filter
  
     internal_tasks = array.where(project_id: Project.where(payment_type: 'internal'))

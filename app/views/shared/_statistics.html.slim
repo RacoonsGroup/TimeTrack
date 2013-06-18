@@ -7,7 +7,7 @@ div class="well"
         th DT
         th DT/RT
     tbody
-      - @presenter.statistics.each do |st|
+      - @presenter.payment_type_statistics.each do |st|
         tr
           td = st[:payment_type]
           td = st[:real_time]
