@@ -1,0 +1,16 @@
+div class="well"
+  table class="table" id="statistic"
+    thead
+      tr
+        th Type
+        th RT
+        th DT
+        th DT/RT
+    tbody
+      - @presenter.statistics.each do |st|
+        tr
+          td = st[:payment_type]
+          td = st[:real_time]
+          td = st[:delivred_time]
+          td = st[:rate]
+          

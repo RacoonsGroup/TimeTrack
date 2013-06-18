@@ -18,6 +18,38 @@ class StatisticsPresenter
     @params[:to_date]
   end
 
+  def statistics
+    array = @time_entries.filter
+ 
+    internal_tasks = array.where(project_id: Project.where(payment_type: 'internal'))
+    point_tasks = array.where(project_id: Project.where(payment_type: 'point'))
+    level_tasks = array.where(project_id: Project.where(payment_type: 'level'))
+    
+    payment_statatistics=[]
+
+    if internal_tasks.present?
+      payment_statatistics.push({ payment_type: :internal, 
+                                  real_time: internal_tasks.sum(:real_time), 
+                                  delivred_time: internal_tasks.sum(:time_points), 
+                                  rate: internal_tasks.sum(:time_points)/internal_tasks.sum(:real_time)})
+    end
+    
+    if point_tasks.present?
+       payment_statatistics.push({ payment_type: :point, 
+                                   real_time: point_tasks.sum(:real_time), 
+                                   delivred_time: point_tasks.sum(:time_points), 
+                                   rate: point_tasks.sum(:time_points)/point_tasks.sum(:real_time)})
+    end     
+
+    if level_tasks.present?
+      payment_statatistics.push({ payment_type: :level, 
+                                  real_time: level_tasks.sum(:real_time), 
+                                  delivred_time: level_tasks.sum(:time_points), 
+                                  rate: level_tasks.sum(:time_points)/level_tasks.sum(:real_time)})
+    end
+    payment_statatistics
+  end
+
   def projects
     projects = ProjectsFilter.new.filter
     projects.unshift(Project.new(project_name: "all"))
