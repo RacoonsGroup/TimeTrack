@@ -11,21 +11,13 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-
-
-
-
 Gemfile
-
-
 # YARD artifacts
 .yardoc
 _yardoc
 doc/
-
 config/database.yml
-
 db/test.sqlite3
 log/*
-
 vendor/bundle
+.idea/
