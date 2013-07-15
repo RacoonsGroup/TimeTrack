@@ -1,18 +1,17 @@
-= simple_form_for resource, html: {class: 'form-horizontal'} do |f|
-  = f.input :name
-  = f.association :project, collection: ProjectsFilter.new.filter, label_method: :project_name
-  = f.input :url, placeholder: 'http://example.com'
-  = f.input :date, :input_html => { :value => "#{Date.today}" }
-  = f.input :status, collection: TimeEntry::STATUSES
-  = f.input :real_time, as: :string
-  - if current_user.admin?
-    =f.input :payable
-  - else
-    =f.input :payable, disabled: true
-  - if (params[:action] == 'new') or current_user.admin?
-    = f.input :time_points
-  - else
-    = f.input :time_points, disabled: true
-  = f.input :description, input_html: {cols: 100, rows: 5}
-  = f.submit 'Save time entry', class: 'btn btn-primary'
-  
+= simple_form_for resource, html: { class: 'well span10' } do |f|
+  legend = legend
+  = f.input :name, input_html: { class: 'span12' }
+  .row-fluid
+    .span4
+      = f.association :project, collection: ProjectsFilter.new.filter, label_method: :project_name
+      = f.input :date, :input_html => { :value => "#{Date.today.strftime('%d.%m.%Y')}", :class => 'withDatepicker' }, as: :string
+      = f.input :url, placeholder: 'http://example.com'
+      = f.input :status, collection: TimeEntry::STATUSES, selected: :finished
+      = f.input :real_time, as: :string
+      - if current_user.admin?
+        =f.input :payable
+      - if current_user.admin?
+        = f.input :time_points
+      = f.submit 'Save time entry', class: 'btn btn-primary'
+    .span8
+       = f.input :description, input_html: { class: 'span12', rows: 16 }

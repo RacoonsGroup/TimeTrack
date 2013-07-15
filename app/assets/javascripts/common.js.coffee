@@ -1,6 +1,5 @@
 jQuery ->
-  jQuery('#from_date').datepicker(dateFormat: "dd.mm.yy")
-  jQuery('#to_date').datepicker(dateFormat: "dd.mm.yy")
+  jQuery('.withDatepicker').datepicker(dateFormat: "dd.mm.yy")
 
   jQuery('table#articles .btn').bind('click', ->
     element = this

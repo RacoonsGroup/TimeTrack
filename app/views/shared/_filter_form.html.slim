@@ -1,9 +1,9 @@
 = form_tag "/statistics", method: :get, class: "statistic_fields well" do
   'From:
-  =' text_field_tag "from_date", @presenter.from_date
+  =' text_field_tag "from_date", @presenter.from_date, class: 'withDatepicker'
 
   'To:
-  =' text_field_tag "to_date", @presenter.to_date
+  =' text_field_tag "to_date", @presenter.to_date, class: 'withDatepicker'
 
   - if current_user.admin?
     'User id:
