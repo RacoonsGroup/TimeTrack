@@ -1,35 +1,52 @@
-h1 Show my Time Entry
-
--if request.referrer
-  -if request.referrer.include?(statistics_path)
-    = link_to 'Back', :back 
-
-dl.dl-horizontal
-  
-  dt Task Name
-  dd= @time_entry.name
-
-  dt Project Name
-  dd= @time_entry.project.project_name
-  
-  - if current_user.admin?
-    dt User
-    dd= @time_entry.user.email
-
-  dt Payable
-  dd= @time_entry.payable
-
-  dt Url
-  dd= link_to @time_entry.url, @time_entry.url
-
-  dt Real Time
-  dd= @time_entry.real_time
-
-  dt Delivered time
-  dd= @time_entry.time_points
-
-  dt Description
-  dd= @time_entry.description
-
-= button_to 'Destroy', time_entry_path(resource), method: :delete, confirm: 'Are you sure?', class: "btn btn-danger"
-= button_to 'Edit', edit_time_entry_path(resource), method: :get, class: "btn btn-primary"
+.span10
+  table.table
+    thead
+      tr.well
+        th colspan='2'
+          .pull-right
+            -if request.referrer
+              -if request.referrer.include?(statistics_path)
+                =' link_to :back, class: 'btn btn-mini btn-inverse' do
+                  i.icon-chevron-left
+                  | &nbsp;Back
+            =' link_to edit_time_entry_path(resource), method: :get, class: "btn btn-mini btn-primary" do
+              i.icon-edit
+              | &nbsp;Edit
+            = link_to time_entry_path(resource), method: :delete, confirm: 'Are you sure?', class: "btn btn-mini btn-danger" do
+              i.icon-remove
+              | &nbsp;Destroy
+          div
+            span.label.label-info
+              = @time_entry.user.email
+            span &nbsp;
+            span.label.label-warning
+              = @time_entry.date.strftime('%d.%m.%Y')
+            span &nbsp;
+            = payable_status(@time_entry.payable)
+    tbody
+      tr
+        td style='width:160px'
+          h1 = @time_entry.id
+        td
+          h1 = @time_entry.name
+      tr.well
+        td
+          dl.without-margin
+            dt Project
+            dd = link_to(@time_entry.project.project_name, statistics_path(project_id: @time_entry.project.id))
+            dt Estimate
+            dd original: #{@time_entry.real_time}
+            dd delivered: #{@time_entry.time_points}
+            dd coeff: #{@time_entry.coeff}
+            - if @time_entry.url.present?
+              dt Url
+              dd = link_to pretty_url(@time_entry.url), @time_entry.url
+        td
+          - if @time_entry.description.present?
+            pre.bg-white =  @time_entry.description
+          - else
+            pre.bg-white
+              blockquote.pull-right
+                p #{ Faker::Lorem.sentence(20)}
+                small Faker
+              .clearfix

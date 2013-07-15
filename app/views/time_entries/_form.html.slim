@@ -4,7 +4,7 @@
   .row-fluid
     .span4
       = f.association :project, collection: ProjectsFilter.new.filter, label_method: :project_name
-      = f.input :date, :input_html => { :value => "#{Date.today.strftime('%d.%m.%Y')}", :class => 'withDatepicker' }, as: :string
+      = f.input :date, :input_html => { :value => "#{ resource.date.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y') }", :class => 'withDatepicker' }, as: :string
       = f.input :url, placeholder: 'http://example.com'
       = f.input :status, collection: TimeEntry::STATUSES, selected: :finished
       = f.input :real_time, as: :string

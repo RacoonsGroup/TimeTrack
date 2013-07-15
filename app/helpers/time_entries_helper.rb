@@ -11,4 +11,16 @@ module TimeEntriesHelper
     return time_s
   end
 
+  def payable_status(payable)
+    if payable
+      '<span class="label label-success">Payable</span>'.html_safe
+    else
+      '<span class="label">Not payable</span>'.html_safe
+    end
+  end
+
+  def pretty_url(url)
+    URI(url).host
+  end
+
 end

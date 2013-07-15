@@ -28,4 +28,8 @@ class TimeEntry < ActiveRecord::Base
   def project_name
     project_id ? project.project_name : project
   end
+
+  def coeff
+    return (time_points / real_time).round(2) unless (time_points.nil? or real_time.nil?)
+  end
 end

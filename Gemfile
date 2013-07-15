@@ -24,6 +24,7 @@ gem "simple-navigation"
 gem 'whenever', require: false
 gem 'prawn'
 gem 'prawnto'
+gem 'faker'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
