@@ -1,17 +1,25 @@
 = form_tag "/statistics", method: :get, class: "statistic_fields well" do
-  'From:
-  =' text_field_tag "from_date", @presenter.from_date, class: 'withDatepicker'
-
-  'To:
-  =' text_field_tag "to_date", @presenter.to_date, class: 'withDatepicker'
-
-  - if current_user.admin?
-    'User id:
-    =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :email, selected: @presenter.selected_user), include_blank: true
-  'Project:
-  =' select_tag :project_id, options_from_collection_for_select(@presenter.projects, :id, :project_name, selected: @presenter.selected_project), include_blank:true
-
-  'Payable:
-  =' select_tag :payable, options_for_select(@presenter.payable, selected:@presenter.selected_payable), include_blank:true
-
-  = submit_tag 'Filter'
+  .row-fluid
+    .span2
+      label
+        'From:
+      =' text_field_tag "from_date", @presenter.from_date, class: 'withDatepicker input-medium', autocomplete: 'off'
+    .span2
+      label
+        'To:
+      =' text_field_tag "to_date", @presenter.to_date, class: 'withDatepicker input-medium', autocomplete: 'off'
+    .span3
+      label
+        'Project:
+      =' select_tag :project_id, options_from_collection_for_select(@presenter.projects, :id, :project_name, selected: @presenter.selected_project), include_blank:true
+    - if current_user.admin?
+      .span3
+        label
+          'User id:
+        =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :email, selected: @presenter.selected_user), include_blank: true
+    .span1
+      label
+        'Payable:
+      =' select_tag :payable, options_for_select(@presenter.payable, selected:@presenter.selected_payable), include_blank:true, class: 'input-mini'
+    .span1.button_padding
+      = submit_tag 'Filter', class: 'btn'
