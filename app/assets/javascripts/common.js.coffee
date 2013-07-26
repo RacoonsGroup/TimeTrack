@@ -1,5 +1,5 @@
 jQuery ->
-  jQuery('.withDatepicker').datepicker(dateFormat: "dd.mm.yy")
+  jQuery('.withDatepicker').datepicker({dateFormat: "dd.mm.yy", firstDay: 1})
 
   jQuery('table#articles .btn').bind('click', ->
     element = this
