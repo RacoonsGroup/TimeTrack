@@ -11,3 +11,4 @@
 //= require bootstrap
 //= require common
 //= require jquery-ui
+//= require cookie.jquery
