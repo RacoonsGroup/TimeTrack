@@ -28,7 +28,7 @@ jQuery ->
     return false
   )
 
-  $('#time_entry_project_id').val($.cookie('last_project'))
+  $('#new_time_entry #time_entry_project_id').val($.cookie('last_project'))
 
-  $(document).on 'change', '#time_entry_project_id', () ->
+  $(document).on 'change', '#new_time_entry #time_entry_project_id', () ->
     $.cookie('last_project', $(this).val(), { expires: 31, path: '/' });
