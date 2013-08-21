@@ -1,25 +1,39 @@
-= form_tag "/statistics", method: :get, class: "statistic_fields well" do
-  .row-fluid
-    .span2
-      label
-        'From:
-      =' text_field_tag "from_date", @presenter.from_date, class: 'withDatepicker input-medium', autocomplete: 'off'
-    .span2
-      label
-        'To:
-      =' text_field_tag "to_date", @presenter.to_date, class: 'withDatepicker input-medium', autocomplete: 'off'
-    .span3
-      label
-        'Project:
-      =' select_tag :project_id, options_from_collection_for_select(@presenter.projects, :id, :project_name, selected: @presenter.selected_project), include_blank:true
-    - if current_user.admin?
+.well
+  = form_tag "/statistics", method: :get, class: "statistic_fields" do
+    .row-fluid
+      .span2
+        label
+          'From:
+        =' text_field_tag "from_date", @presenter.from_date, class: 'withDatepicker input-100-percent', autocomplete: 'off'
+      .span2
+        label
+          'To:
+        =' text_field_tag "to_date", @presenter.to_date, class: 'withDatepicker input-100-percent', autocomplete: 'off'
       .span3
         label
-          'User id:
-        =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :email, selected: @presenter.selected_user), include_blank: true
-    .span1
-      label
-        'Payable:
-      =' select_tag :payable, options_for_select(@presenter.payable, selected:@presenter.selected_payable), include_blank:true, class: 'input-mini'
-    .span1.button_padding
-      = submit_tag 'Filter', class: 'btn'
+          'Project:
+        =' select_tag :project_id, options_from_collection_for_select(@presenter.projects, :id, :project_name, selected: @presenter.selected_project), include_blank:true, class: 'input-100-percent'
+      - if current_user.admin?
+        .span3
+          label
+            'User id:
+          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :email, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
+      .span1
+        label
+          'Payable:
+        =' select_tag :payable, options_for_select(@presenter.payable, selected:@presenter.selected_payable), include_blank:true, class: 'input-100-percent'
+      .span1.button_padding
+        = submit_tag 'Filter', class: 'btn'
+
+  .row-fluid
+    .span8
+      ul.inline.fast-date
+        li
+          span.label Date Select:
+        li
+          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.yesterday, format: :short_ru)}" data-end-date="#{l(Date.yesterday, format: :short_ru)}" Yesterday
+        li
+          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.today, format: :short_ru)}" data-end-date="#{l(Date.today, format: :short_ru)}" Today
+    .span4
+      - if can? :manage, :all
+        = link_to content_tag(:i, '', class: 'icon-download') + " PDF отчёт" , download_pdf_statistics_path, class: 'link_to_pdf btn pull-right'

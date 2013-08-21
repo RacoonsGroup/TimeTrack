@@ -7,10 +7,6 @@
 / Will be permanently removed in latest versions
 /= render "/shared/statistics_progress_bar"
 
-
-- if can? :manage, :all
-  = link_to "PDF отчёт" , download_pdf_statistics_path, class: 'link_to_pdf'
-
 br
 
 table class="table" id="time_entries"
