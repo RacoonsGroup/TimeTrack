@@ -32,3 +32,9 @@ jQuery ->
 
   $(document).on 'change', '#new_time_entry #time_entry_project_id', () ->
     $.cookie('last_project', $(this).val(), { expires: 31, path: '/' });
+
+  $(document).on 'click', '.select_date', () ->
+    start = $(this).data('start-date')
+    end = $(this).data('end-date')
+    $('#from_date').val(start)
+    $('#to_date').val(end)
