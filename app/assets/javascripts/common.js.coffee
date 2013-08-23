@@ -9,7 +9,7 @@ jQuery ($) ->
       $(document).on 'click', '.select_date', @dateFastSelect
       $(document).on 'click', '.link_to_pdf', @downloadPDF
       $(document).on 'click', 'table#articles .btn', @changeArticleStatus
-      @pageLoaded
+      @pageLoaded()
 
     saveLastProject: ->
       $.cookie('last_project', $(this).val(), { expires: 31, path: '/' });
