@@ -23,8 +23,10 @@ class Article < ActiveRecord::Base
   def toggle_read user
     if read_by? user
       unread_by! user
+      false
     else
       read_by! user
+      true
     end
   end
 
