@@ -27,27 +27,7 @@
 
   .row-fluid
     .span8
-      ul.inline.fast-date
-        li
-          span.label Date Select:
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.yesterday, format: :short_ru)}" data-end-date="#{l(Date.yesterday, format: :short_ru)}" Yesterday
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.current, format: :short_ru)}" data-end-date="#{l(Date.current, format: :short_ru)}" Today
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.current.beginning_of_week, format: :short_ru)}" data-end-date="#{l(Date.current, format: :short_ru)}" This week
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.current.beginning_of_week - 7.day, format: :short_ru)}" data-end-date="#{l(Date.current.beginning_of_week - 1.day, format: :short_ru)}" Previous week
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.current.beginning_of_month, format: :short_ru)}" data-end-date="#{l(Date.current, format: :short_ru)}" This month
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.current.beginning_of_month - 1.month, format: :short_ru)}" data-end-date="#{l(Date.current.beginning_of_month - 1.day, format: :short_ru)}" Previous month
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l((Date.current.mday > 15 ? Date.current - (Date.current.mday - 16).day: Date.current.beginning_of_month), format: :short_ru)}" data-end-date="#{l(Date.current, format: :short_ru)}" This iteration
-        li
-          a href='#' class="select_date" title="Select today date" data-start-date="#{l(Date.current.beginning_of_month, format: :short_ru)}" data-end-date="#{l((Date.current.mday > 15 ? Date.current - (Date.current.mday - 15).day: Date.current.beginning_of_month), format: :short_ru)}" Previous iteration
+      = render 'shared/fast_date_select'
     .span4
       - if can? :manage, :all
         = link_to content_tag(:i, '', class: 'icon-download') + " PDF отчёт" , download_pdf_statistics_path, class: 'link_to_pdf btn pull-right'
-
-= Date.current.mday < 15 ? Date.new()

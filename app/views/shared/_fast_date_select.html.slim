@@ -1,0 +1,26 @@
+ul.inline.fast-date
+  li
+    span.label Day Select:
+  li
+    = link_to 'Yesterday', '#', class: 'select_date', data: { :'start-date' => l(Date.yesterday, format: :short_ru), :'end-date' => l(Date.yesterday, format: :short_ru)}
+  li
+    = link_to 'Today', '#', class: 'select_date', data: { :'start-date' => l(Date.current, format: :short_ru), :'end-date' => l(Date.current, format: :short_ru)}
+  li
+    span.label Week Select:
+  li
+    = link_to 'This week', '#', class: 'select_date', data: { :'start-date' => l(Date.current.beginning_of_week, format: :short_ru), :'end-date' => l(Date.current, format: :short_ru)}
+  li
+    = link_to 'Previous week', '#', class: 'select_date', data: { :'start-date' => l(Date.current.beginning_of_week - 7.day, format: :short_ru), :'end-date' => l(Date.current.beginning_of_week.prev_day, format: :short_ru)}
+ul.inline.dast-date
+  li
+    span.label Month Select:
+  li
+    = link_to 'This month', '#', class: 'select_date', data: { :'start-date' => l(Date.current.beginning_of_month, format: :short_ru), :'end-date' => l(Date.current, format: :short_ru)}
+  li
+    = link_to 'Previous month', '#', class: 'select_date', data: { :'start-date' => l(Date.current.beginning_of_month.prev_month, format: :short_ru), :'end-date' => l(Date.current.beginning_of_month.prev_day, format: :short_ru)}
+  li
+    span.label Iteration Select:
+  li
+    = link_to 'This iteration', '#', class: 'select_date', data: { :'start-date' => l(this_iteration_start(Date.current), format: :short_ru), :'end-date' => l(Date.current, format: :short_ru)}
+  li
+    = link_to 'Previous iteration', '#', class: 'select_date', data: { :'start-date' => l(prev_iteration_start(Date.current), format: :short_ru), :'end-date' => l(prev_iteration_end(Date.current), format: :short_ru)}
