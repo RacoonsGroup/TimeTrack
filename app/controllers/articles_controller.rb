@@ -2,9 +2,9 @@ class ArticlesController < InheritedResources::Base
   actions :index, :new, :create
 
   def toggle_read
-    resource.toggle_read(current_user)
+    read = resource.toggle_read(current_user)
     respond_to do |format|
-      format.json { render json: resource }
+      format.json { render json: read }
       format.html { redirect_to collection_url }
     end
   end
