@@ -1,44 +1,55 @@
-jQuery ->
-  jQuery('.withDatepicker').datepicker({dateFormat: "dd.mm.yy", firstDay: 1})
+jQuery ($) ->
+  Common =
+    init: ->
+      @bindEvents()
 
-  jQuery('table#articles .btn').bind('click', ->
-    element = this
-    jQuery.ajax(
-      url: jQuery(element).data('url'),
-      dataType: 'json',
-      type: 'get',
-      data:
-        id: jQuery(element).data('id')
-      success: ->
-        jQuery(element).attr('disabled', true)
-        alert('article updated')
-      error: ->
-        jQuery(element).attr('disabled', true)
-    )
-  )
+    bindEvents: ->
+      $(document).on 'change', '#new_time_entry #time_entry_project_id', @saveLastProject
+      $(document).on 'click', '.copy-btn', @copyRealTime
+      $(document).on 'click', '.select_date', @dateFastSelect
+      $(document).on 'click', '.link_to_pdf', @downloadPDF
+      $(document).on 'click', 'table#articles .btn', @changeArticleStatus
+      @pageLoaded
 
-  $('.link_to_pdf').bind('click', ->
-    from = $('#from_date').val()
-    to = $('#to_date').val()
-    link = $(this).attr('href')
-    if(from != '' && to != '')
-      window.location = link + '?from=' + from + '&to=' + to
-    else
+    saveLastProject: ->
+      $.cookie('last_project', $(this).val(), { expires: 31, path: '/' });
+
+    copyRealTime: ->
+      realTime = $(this).closest('.real-time-block').find('input').val()
+      $('#time_entry_time_points').val(realTime)
+
+    dateFastSelect: ->
+      start = $(this).data('start-date')
+      end = $(this).data('end-date')
+      $('#from_date').val(start)
+      $('#to_date').val(end)
+
+    downloadPDF: ->
+      from = $('#from_date').val()
+      to = $('#to_date').val()
+      link = $(this).attr('href')
+      link = link + '?from=' + from + '&to=' + to if from != '' && to != ''
       window.location = link
-    return false
-  )
+      false
 
-  $('#new_time_entry #time_entry_project_id').val($.cookie('last_project'))
+    changeArticleStatus: ->
+      element = this
+      $.ajax
+        url: $(element).data('url'),
+        dataType: 'json',
+        type: 'get',
+        data:
+          id: $(element).data('id')
+        success: (data) ->
+          if data
+            $(element).removeClass('btn-success').addClass('btn-danger').text('Mark as unread').closest('tr').find('.labeled span.label').text('Read').addClass('label-success')
+          else
+            $(element).removeClass('btn-danger').addClass('btn-success').text('Mark as read').closest('tr').find('.labeled span.label').text('Unread').removeClass('label-success')
+        error: ->
+          alert('Ooops! Error!')
 
-  $(document).on 'change', '#new_time_entry #time_entry_project_id', () ->
-    $.cookie('last_project', $(this).val(), { expires: 31, path: '/' });
+    pageLoaded: ->
+      $('#new_time_entry #time_entry_project_id').val($.cookie('last_project')) # set last project from cookie
+      $('.withDatepicker').datepicker({dateFormat: "dd.mm.yy", firstDay: 1}) # set dateSelector to inputs
 
-  $(document).on 'click', '.select_date', () ->
-    start = $(this).data('start-date')
-    end = $(this).data('end-date')
-    $('#from_date').val(start)
-    $('#to_date').val(end)
-
-  $(document).on 'click', '.copy-btn', () ->
-    realTime = $(this).closest('.real-time-block').find('input').val()
-    $('#time_entry_time_points').val(realTime)
+  Common.init()
