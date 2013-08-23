@@ -38,3 +38,7 @@ jQuery ->
     end = $(this).data('end-date')
     $('#from_date').val(start)
     $('#to_date').val(end)
+
+  $(document).on 'click', '.copy-btn', () ->
+    realTime = $(this).closest('.real-time-block').find('input').val()
+    $('#time_entry_time_points').val(realTime)

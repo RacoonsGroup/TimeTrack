@@ -3,15 +3,24 @@
   = f.input :name, input_html: { class: 'span12' }
   .row-fluid
     .span4
-      = f.association :project, collection: ProjectsFilter.new.filter, label_method: :project_name
-      = f.input :date, :input_html => { :value => "#{ resource.date.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y') }", :class => 'withDatepicker' }, as: :string
-      = f.input :url, placeholder: 'http://example.com'
-      = f.input :status, collection: TimeEntry::STATUSES, selected: :finished
-      = f.input :real_time, as: :string
+      .row-fluid
+        .span10
+          = f.association :project, collection: ProjectsFilter.new.filter, label_method: :project_name, input_html: { class: 'resized_input' }
+          = f.input :date, :input_html => { :value => "#{ resource.date.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y') }", :class => 'withDatepicker' }, as: :string, input_html: { class: 'resized_input' }
+          = f.input :url, placeholder: 'http://example.com', input_html: { class: 'resized_input' }
+          = f.input :status, collection: TimeEntry::STATUSES, selected: :finished, input_html: { class: 'resized_input' }
+      .row-fluid.real-time-block
+        .span10
+          = f.input :real_time, as: :string, input_html: { class: 'resized_input' }
+        - if current_user.admin?
+          .span2
+            a.copy-btn.btn(title="Copy to delivered time")
+              i.icon-chevron-right
       - if current_user.admin?
-        =f.input :payable
-      - if current_user.admin?
-        = f.input :time_points
+        .row-fluid
+          .span10
+            = f.input :payable, input_html: { class: 'resized_input' }
+            = f.input :time_points, input_html: { class: 'resized_input' }
       = f.submit 'Save time entry', class: 'btn btn-primary'
     .span8
        = f.input :description, input_html: { class: 'span12', rows: 16 }
