@@ -14,7 +14,7 @@ table.table#articles
   tbody
     - collection.each do |art|
       tr
-        td = read_unread_label_for_article(art)
+        td.labeled = read_unread_label_for_article(art)
         td = link_to art.title, art.url
         td = importance_label_for_article(art)
         td = art.short_description
