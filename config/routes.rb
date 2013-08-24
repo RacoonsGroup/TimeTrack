@@ -20,6 +20,7 @@ TimeTrack::Application.routes.draw do
   namespace :api do
     resources :time_entries
     resources :articles
+    resources :projects, only: [:index]
   end
 
 end
