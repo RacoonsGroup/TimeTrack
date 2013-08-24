@@ -27,7 +27,7 @@ module Api
           render json: { error: { messages: time_entry.errors.full_messages } }
         end
       else
-        render json: { error: { messages: ["Authentication failure"] } }
+        render json: "Authentication failure", status: 401
       end
     end
 
