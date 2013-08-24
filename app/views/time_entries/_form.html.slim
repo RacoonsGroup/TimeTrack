@@ -6,7 +6,7 @@
       .row-fluid
         .span10
           = f.association :project, collection: ProjectsFilter.new.filter, label_method: :project_name, input_html: { class: 'resized_input' }
-          = f.input :date, :input_html => { :value => "#{ resource.date.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y') }", :class => 'withDatepicker' }, as: :string, input_html: { class: 'resized_input' }
+          = f.input :date, :input_html => { :value => "#{ resource.date.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y') }", :class => 'withDatepicker resized_input' }, as: :string
           = f.input :url, placeholder: 'http://example.com', input_html: { class: 'resized_input' }
           = f.input :status, collection: TimeEntry::STATUSES, selected: :finished, input_html: { class: 'resized_input' }
       .row-fluid.real-time-block
