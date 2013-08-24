@@ -1,5 +1,6 @@
 module Api
   class TimeEntriesController < ActionController::Base
+    include ::TimeEntriesHelper
 
     def index
       user = authenticate!
@@ -17,7 +18,7 @@ module Api
         time_entry = user.time_entries.new({ name:      params[:name],
                                              project:   params[:project],
                                              date:      params[:date].to_date,
-                                             real_time: params[:real_time].to_f,
+                                             real_time: pretty_time(params[:real_time]),
                                              status:    params[:status],
                                            })
         if time_entry.save
