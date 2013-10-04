@@ -15,7 +15,8 @@ table class="table" id="time_entries"
       th Task name
       th Project name
       th Real time (#{@presenter.real_time})
-      th Delivered time (#{@presenter.delivered_time})
+      - if current_user.admin?
+        th Delivered time (#{@presenter.delivered_time})
       th Status
       th Date
       th Payable
@@ -28,7 +29,8 @@ table class="table" id="time_entries"
         td = link_to te.name, time_entry_path(te)
         td = te.project_name
         td = te.real_time
-        td = te.time_points
+        - if current_user.admin?
+          td = te.time_points
         td = te.status
         td = te.date
         td = te.payable

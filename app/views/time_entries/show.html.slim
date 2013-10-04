@@ -36,8 +36,10 @@
             dd = link_to(@time_entry.project.project_name, statistics_path(project_id: @time_entry.project.id))
             dt Estimate
             dd original: #{@time_entry.real_time}
-            dd delivered: #{@time_entry.time_points}
+            - if current_user.admin?
+              dd delivered: #{@time_entry.time_points}
             dd coeff: #{@time_entry.coeff}
+            dd evaluation: #{@time_entry.evaluation}
             - if @time_entry.url.present?
               dt Url
               dd = link_to pretty_url(@time_entry.url), @time_entry.url

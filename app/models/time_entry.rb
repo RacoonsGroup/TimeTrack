@@ -1,14 +1,14 @@
 class TimeEntry < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  attr_accessible :description, :name, :project, :real_time, :status, :time_points, :date , :project_id, :url, :payable
+  attr_accessible :description, :name, :project, :real_time, :status, :time_points, :date , :project_id, :url, :payable, :evaluation
 
   STATUSES = %w(finished processing)
 
-  validates :name, :user_id, :project, :real_time, :status, presence: true
+  validates :name, :user_id, :project, :real_time, :status, :evaluation, presence: true
   validates :name, length: { maximum: 255 }
   validates :project, length: { maximum: 100 }
-  validates :real_time, numericality: { greater_than: 0 }
+  validates :real_time, :evaluation, numericality: { greater_than: 0 }
   validates :status, inclusion: { in: STATUSES }
   validates :time_points, numericality: true, allow_blank: true
   validates :date, presence: true

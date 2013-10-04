@@ -8,7 +8,9 @@ table.table
       th Task name
       th Project name
       th Real time
-      th Delivered time
+      th Evaluation
+      - if current_user.admin?
+        th Delivered time
       th Status
       th Date
       th Payable
@@ -19,7 +21,9 @@ table.table
         td= link_to te.name, time_entry_path(te)
         td= te.project_name
         td= te.real_time
-        td= te.time_points
+        td= te.evaluation
+        - if current_user.admin?
+          td= te.time_points
         td= te.status
         td= te.date
         td= te.payable

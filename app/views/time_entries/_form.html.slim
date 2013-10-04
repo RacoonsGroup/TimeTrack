@@ -9,8 +9,10 @@
           = f.input :date, :input_html => { :value => "#{ resource.date.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y') }", :class => 'withDatepicker resized_input' }, as: :string
           = f.input :url, placeholder: 'http://example.com', input_html: { class: 'resized_input' }
           = f.input :status, collection: TimeEntry::STATUSES, selected: :finished, input_html: { class: 'resized_input' }
+
       .row-fluid.real-time-block
         .span10
+          = f.input :evaluation, input_html: { class: 'resized_input' }
           = f.input :real_time, as: :string, input_html: { class: 'resized_input' }
         - if current_user.admin?
           .span2

@@ -5,13 +5,15 @@ div class="well"
       tr
         th Type
         th RT
-        th DT
-        th DT/RT
+        - if current_user.admin?
+          th DT
+          th DT/RT
     tbody
       - @presenter.payment_type_statistics.each do |st|
         tr
           td = st[:payment_type]
           td = st[:real_time]
-          td = st[:delivred_time]
-          td = st[:rate]
+          - if current_user.admin?
+            td = st[:delivred_time]
+            td = st[:rate]
           
