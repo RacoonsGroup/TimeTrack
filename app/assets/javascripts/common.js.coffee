@@ -15,7 +15,7 @@ jQuery ($) ->
       $.cookie('last_project', $(this).val(), { expires: 31, path: '/' });
 
     copyRealTime: ->
-      realTime = $(this).closest('.real-time-block').find('input').val()
+      realTime = $(this).closest('.real-time-block').find('input.real_time').val()
       $('#time_entry_time_points').val(realTime)
 
     dateFastSelect: ->

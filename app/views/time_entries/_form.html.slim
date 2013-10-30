@@ -13,7 +13,9 @@
       .row-fluid.real-time-block
         .span10
           = f.input :evaluation, input_html: { class: 'resized_input' }
-          = f.input :real_time, as: :string, input_html: { class: 'resized_input' }
+      .row-fluid.real-time-block
+        .span10
+          = f.input :real_time, as: :string, input_html: { class: 'resized_input real_time' }
         - if current_user.admin?
           .span2
             a.copy-btn.btn(title="Copy to delivered time")
