@@ -7,7 +7,7 @@ jQuery ($) ->
       $(document).on 'change', '#new_time_entry #time_entry_project_id', @saveLastProject
       $(document).on 'click', '.copy-btn', @copyRealTime
       $(document).on 'click', '.select_date', @dateFastSelect
-      $(document).on 'click', '.link_to_pdf', @downloadPDF
+      $(document).on 'click', '.get_report ul.dropdown-menu a', @downloadReport
       $(document).on 'click', 'table#articles .btn', @changeArticleStatus
       @pageLoaded()
 
@@ -24,12 +24,11 @@ jQuery ($) ->
       $('#from_date').val(start)
       $('#to_date').val(end)
 
-    downloadPDF: ->
-      from = $('#from_date').val()
-      to = $('#to_date').val()
+    downloadReport: ->
+      data = $('form.statistic_fields').serialize()
+      report_type = $(this).data('type')
       link = $(this).attr('href')
-      link = link + '?from=' + from + '&to=' + to if from != '' && to != ''
-      window.location = link
+      window.location = link + '?' + data + '&report_type=' + report_type
       false
 
     changeArticleStatus: ->
