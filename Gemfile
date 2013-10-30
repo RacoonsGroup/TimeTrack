@@ -40,6 +40,9 @@ group :development do
   gem 'heroku'
   gem "letter_opener"
   gem 'debugger'
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'capistrano-unicorn'
 end
 
 group :development, :test do
