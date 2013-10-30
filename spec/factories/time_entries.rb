@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :time_entry do
     name "first entry"
-    project "test"
     real_time 1
     status "finished"
+    date Date.today
   end
 end
