@@ -8,9 +8,17 @@ class StatisticsController < ApplicationController
     #@month_hours = TimeEntry.month_hours
   end
 
-  def download_pdf
-    output = PdfReport.new.to_pdf(params[:from], params[:to])
-    send_data output, :type => 'application/pdf', :filename => "#{Time.zone.now.strftime('%d %b %y')}"
+  def download
+    filename = "report-#{params[:from_date]||Date.today}-#{params[:to_date]}.#{params[:format]}"
+    output = respond_to do |format|
+      format.pdf {
+        PdfReport.new.to_pdf(params[:from_date], params[:to_date])
+      }
+      format.xls {
+        XlsReport.new(params).get_xls
+      }
+    end
+    send_data(output, filename: filename)
   end
 
 end
