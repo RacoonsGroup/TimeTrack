@@ -39,6 +39,7 @@ group :development do
   gem 'rails_best_practices'
   gem 'heroku'
   gem "letter_opener"
+  gem 'debugger'
 end
 
 group :development, :test do
