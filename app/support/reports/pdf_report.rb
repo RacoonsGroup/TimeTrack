@@ -15,7 +15,7 @@ class PdfReport < Prawn::Document
     end
   end
 
-  def to_pdf(from, to)
+  def to_pdf(params)
     # Устанавливает руссий шрифт
     font_families.update(
       "Verdana" => {
@@ -27,14 +27,13 @@ class PdfReport < Prawn::Document
     font "Verdana", size: 9
 
     # выборка записей
-    if from == nil && to == nil
+    if params[:from_date].blank? && params[:to_date].blank?
       text "Отчет за #{Time.zone.now.strftime('%d %b %Y')}", size: 10, style: :bold, align: :left
-      @time_entries = TimeEntry.select { |te| te.date.day == Time.zone.now.day }
+      params[:from_date] = params[:to_date] = Date.today
+      @time_entries = StatisticsFilter.new(params[:user_id], params).filter
     else
-      text "Отчет за период с #{from} по #{to}", size: 10, style: :bold, align: :left
-      @time_entries = TimeEntry.select {
-        |te| from.to_time.day <= te.date.day && to.to_time.day >= te.date.day
-      }
+      text "Отчет за период с #{params[:from_date]} по #{params[:to_date]}", size: 10, style: :bold, align: :left
+      @time_entries = StatisticsFilter.new(params[:user_id], params).filter
     end
     @time_entries.sort! do | te1, te2 |
       (te1.user ? te1.user.email : "Unknown user") <=> (te2.user ? te2.user.email : "Unknown user")
