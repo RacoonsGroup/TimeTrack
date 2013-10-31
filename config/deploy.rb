@@ -38,7 +38,6 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/system/ #{release_path}/public/system"
     run "ln -nfs #{shared_path}/assets #{release_path}/public/assets"
     run "ln -nfs #{shared_path}/log #{release_path}/log"
-    run "ln -nfs #{shared_path}/tmp #{release_path}/tmp"
   end
 end
 

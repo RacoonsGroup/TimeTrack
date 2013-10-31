@@ -27,6 +27,7 @@ gem 'prawnto'
 gem 'faker'
 
 gem 'to_xls-rails'
+gem 'unicorn'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
