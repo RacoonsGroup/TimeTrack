@@ -7,7 +7,7 @@ class StatisticsPresenter
   end
 
   def selected_project
-    @params[:project_id]
+    @params[:project_ids]
   end
 
   def from_date

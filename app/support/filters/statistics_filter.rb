@@ -39,8 +39,8 @@ class StatisticsFilter
     end
 
     def by_project(te)
-      if @params[:project_id].present?
-        te = te.where(project_id: @params[:project_id])
+      if @params[:project_ids].present?
+        te = te.where(project_id: @params[:project_ids])
       end
       te
     end

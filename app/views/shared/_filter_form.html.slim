@@ -12,7 +12,7 @@
       .span3
         label
           'Project:
-        =' select_tag :project_id, options_from_collection_for_select(@presenter.projects, :id, :project_name, selected: @presenter.selected_project), include_blank:true, class: 'input-100-percent'
+        =' select_tag :project_ids, options_from_collection_for_select(@presenter.projects, :id, :project_name, selected: @presenter.selected_project), include_blank:true, class: 'input-100-percent multiselect', multiple: true
       - if current_user.admin?
         .span3
           label
