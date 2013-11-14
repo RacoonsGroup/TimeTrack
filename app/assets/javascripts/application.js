@@ -12,3 +12,4 @@
 //= require common
 //= require jquery-ui
 //= require cookie.jquery
+//= require chosen.jquery.min

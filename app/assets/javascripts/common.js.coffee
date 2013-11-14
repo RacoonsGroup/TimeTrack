@@ -9,6 +9,7 @@ jQuery ($) ->
       $(document).on 'click', '.select_date', @dateFastSelect
       $(document).on 'click', '.get_report ul.dropdown-menu a', @downloadReport
       $(document).on 'click', 'table#articles .btn', @changeArticleStatus
+      $(document).ready @multiselect
       @pageLoaded()
 
     saveLastProject: ->
@@ -50,5 +51,8 @@ jQuery ($) ->
     pageLoaded: ->
       $('#new_time_entry #time_entry_project_id').val($.cookie('last_project')) # set last project from cookie
       $('.withDatepicker').datepicker({dateFormat: "dd.mm.yy", firstDay: 1}) # set dateSelector to inputs
+
+    multiselect: ->
+      $(".multiselect").chosen();
 
   Common.init()
