@@ -18,6 +18,7 @@ _yardoc
 doc/
 config/database.yml
 db/test.sqlite3
+db/development.sqlite3
 log/*
 vendor/bundle
 .idea/

@@ -16,8 +16,8 @@
       - if current_user.admin?
         .span3
           label
-            'User id:
-          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :email, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
+            'User:
+          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :name, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
       .span1
         label
           'Payable:
