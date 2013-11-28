@@ -44,6 +44,7 @@ group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
   gem 'capistrano-unicorn'
+  gem 'sqlite3'
 end
 
 group :development, :test do
