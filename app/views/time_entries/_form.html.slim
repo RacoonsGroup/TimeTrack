@@ -24,6 +24,7 @@
         .row-fluid
           .span10
             = f.input :payable, input_html: { class: 'resized_input' }
+            = f.input :is_visible_for_customer, input_html: { class: 'resized_input' }
             = f.input :time_points, input_html: { class: 'resized_input' }
       = f.submit 'Save time entry', class: 'btn btn-primary'
     .span8

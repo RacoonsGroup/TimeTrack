@@ -1,7 +1,8 @@
 class TimeEntry < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  attr_accessible :description, :name, :project, :real_time, :status, :time_points, :date , :project_id, :url, :payable, :evaluation
+  attr_accessible :description, :name, :project, :real_time, :status, :time_points,
+                  :date , :project_id, :url, :payable, :evaluation, :is_visible_for_customer
 
   STATUSES = %w(finished processing)
 
