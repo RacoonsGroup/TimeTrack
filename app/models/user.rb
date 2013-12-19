@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     role == 'admin'
   end
 
+  def customer?
+    type == 'Customer' || self.is_a?(Customer)
+  end
+
   def read? article
     articles.where(id: article.id).any?
   end

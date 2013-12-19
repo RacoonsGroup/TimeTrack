@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131128132951) do
+ActiveRecord::Schema.define(:version => 20131202102210) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -77,13 +77,14 @@ ActiveRecord::Schema.define(:version => 20131128132951) do
     t.float    "time_points"
     t.string   "status"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.date     "date"
     t.integer  "project_id"
     t.string   "url"
     t.boolean  "payable"
     t.string   "evaluation"
+    t.boolean  "is_visible_for_customer", :default => false
   end
 
   add_index "time_entries", ["user_id"], :name => "index_tasks_on_user_id"

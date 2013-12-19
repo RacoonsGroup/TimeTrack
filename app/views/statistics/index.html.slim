@@ -1,6 +1,6 @@
-=content_for :sidebar do
-  =render "/shared/statistics"
-
+- unless current_user.customer?
+  =content_for :sidebar do
+    =render "/shared/statistics"
 
 = render "/shared/filter_form"
 
@@ -14,9 +14,12 @@ table class="table" id="time_entries"
     tr
       th Task name
       th Project name
-      th Real time (#{@presenter.real_time})
+      - unless current_user.customer?
+        th Real time (#{@presenter.real_time})
       - if current_user.admin?
         th Delivered time (#{@presenter.delivered_time})
+      - elsif current_user.customer?
+        th Time (#{@presenter.delivered_time})
       th Status
       th Date
       th Payable
@@ -28,8 +31,9 @@ table class="table" id="time_entries"
       tr
         td = link_to te.name, time_entry_path(te)
         td = te.project_name
-        td = te.real_time
-        - if current_user.admin?
+        - unless current_user.customer?
+          td = te.real_time
+        - if current_user.admin? || current_user.customer?
           td = te.time_points
         td = te.status
         td = te.date

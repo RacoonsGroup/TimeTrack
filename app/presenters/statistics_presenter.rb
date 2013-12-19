@@ -48,6 +48,7 @@ class StatisticsPresenter
   def payable
     payable = [['All',''], ['True', :true], ['False', :false], ['Nil', :nil]]    
   end
+
   def selected_payable
     @params[:payable]
   end
