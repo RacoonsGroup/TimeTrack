@@ -6,7 +6,7 @@ class StatisticsCustomerPresenter < StatisticsPresenter
     @params = params
     @customer = customer
 
-    @time_entries = StatisticsFilter.new(params[:user_id],params)
+    @time_entries = CustomerStatisticsFilter.new(customer,params)
   end
 
   def selected_user

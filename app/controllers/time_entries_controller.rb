@@ -7,7 +7,7 @@ class TimeEntriesController < InheritedResources::Base
   end
 
   def show
-    if can?(:manage,:time_entries)
+    if can?(:manage, :time_entries) || can?(:read, :time_entries)
       @time_entry = TimeEntry.find(params[:id])
     else
       show!{ collection_url }
@@ -33,7 +33,7 @@ class TimeEntriesController < InheritedResources::Base
 
   def update
     params[:time_entry][:real_time] = pretty_time(params[:time_entry][:real_time])
-    if can?(:manage,:time_entries)
+    if can?(:manage,:time_entries) || can?(:read, :time_entries)
       @time_entry=TimeEntry.find(params[:id])
       if @time_entry.update_attributes(params[:time_entry])
         redirect_to @time_entry

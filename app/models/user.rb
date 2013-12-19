@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     role == 'admin'
   end
 
+  def user?
+    role == 'user'
+  end
+
   def customer?
     type == 'Customer' || self.is_a?(Customer)
   end
