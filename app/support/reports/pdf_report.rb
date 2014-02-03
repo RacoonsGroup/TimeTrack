@@ -30,10 +30,10 @@ class PdfReport < Prawn::Document
     if params[:from_date].blank? && params[:to_date].blank?
       text "Отчет за #{Time.zone.now.strftime('%d %b %Y')}", size: 10, style: :bold, align: :left
       params[:from_date] = params[:to_date] = Date.today
-      @time_entries = StatisticsFilter.new(params[:user_id], params).filter
+      @time_entries = StatisticsFilter.new(params[:user_id], params).filter.to_a
     else
       text "Отчет за период с #{params[:from_date]} по #{params[:to_date]}", size: 10, style: :bold, align: :left
-      @time_entries = StatisticsFilter.new(params[:user_id], params).filter
+      @time_entries = StatisticsFilter.new(params[:user_id], params).filter.to_a
     end
     @time_entries.sort! do | te1, te2 |
       (te1.user ? te1.user.email : "Unknown user") <=> (te2.user ? te2.user.email : "Unknown user")

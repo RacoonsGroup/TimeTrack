@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :qualification_id, :name, :type
+  #attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :qualification_id, :name, :type
 
 
   def set_default_user_role

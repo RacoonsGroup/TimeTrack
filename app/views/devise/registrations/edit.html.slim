@@ -7,11 +7,13 @@ h2
   = f.input :email
   div
     = f.input :password
-    i (leave blank if you don't want to change it)
+    i
+      | (leave blank if you don't want to change it)
   = f.input :password_confirmation
   div
     = f.input :current_password
-    i (we need your current password to confirm your changes)
+    i
+      | (we need your current password to confirm your changes)
   = f.submit "Update"
 h3 Cancel my account
 p

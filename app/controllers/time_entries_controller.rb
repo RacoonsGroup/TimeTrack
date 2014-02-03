@@ -63,4 +63,8 @@ class TimeEntriesController < InheritedResources::Base
     def collection
       @time_entries ||= end_of_association_chain.order('date desc').page(params[:page])
     end
+
+    def permitted_params
+      params.permit! || {}
+    end
 end

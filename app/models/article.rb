@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  attr_accessible :importance, :short_description, :title, :url
+  #attr_accessible :importance, :short_description, :title, :url
 
   has_and_belongs_to_many :users
 

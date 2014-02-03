@@ -25,7 +25,7 @@ protected
   def time_entries
     entries = StatisticsFilter.new(@filters[:user_id], @filters).filter
     if @type.to_s == 'simple'
-      sum_same_tasks(entries)
+      sum_same_tasks(entries.to_a)
     else
       entries
     end

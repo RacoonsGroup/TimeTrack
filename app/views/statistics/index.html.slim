@@ -39,7 +39,7 @@ table class="table" id="time_entries"
         td = te.date
         td = te.payable
         - if current_user.admin?
-          td = te.user_email
+          td = te.user_name
         td = link_to "Edit", edit_time_entry_path(te)
         td = link_to "Delete", time_entry_path(te), method: :delete
 

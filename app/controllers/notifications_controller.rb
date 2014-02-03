@@ -6,4 +6,8 @@ class NotificationsController < InheritedResources::Base
     def collection
       @notifications = end_of_association_chain.current.order('start_date desc')
     end
+
+    def permitted_params
+      params.permit! || {}
+    end
 end

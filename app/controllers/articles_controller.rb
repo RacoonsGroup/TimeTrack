@@ -27,4 +27,8 @@ class ArticlesController < InheritedResources::Base
       end
       # @articles ||= end_of_association_chain.page(params[:page]).per(10)
     end
+
+    def permitted_params
+      params.permit! || {}
+    end
 end

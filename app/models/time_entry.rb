@@ -1,8 +1,8 @@
 class TimeEntry < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  attr_accessible :description, :name, :project, :real_time, :status, :time_points,
-                  :date , :project_id, :url, :payable, :evaluation, :is_visible_for_customer
+  #attr_accessible :description, :name, :project, :real_time, :status, :time_points,
+  #                :date , :project_id, :url, :payable, :evaluation, :is_visible_for_customer
 
   STATUSES = %w(finished processing)
 
@@ -16,6 +16,7 @@ class TimeEntry < ActiveRecord::Base
 
 
   delegate :email, to: :user, prefix: true, allow_nil: true
+  delegate :name, to: :user, prefix: true, allow_nil: true
 
 
   class << self
