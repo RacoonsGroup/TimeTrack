@@ -27,7 +27,7 @@ set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 set :normalize_asset_timestamps, false
 
-set :rvm_ruby_string, '1.9.3-p327'
+set :rvm_ruby_string, '2.1.0-p0'
 set :rvm_type, 'user'
 set :rvm_path, '/home/deployer/.rvm/'
 set :rvm_bin_path, '/home/deployer/.rvm/bin'
@@ -40,7 +40,6 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/log #{release_path}/log"
   end
 end
-
 
 before 'deploy:migrate', 'deploy:symlink_shared'
 after 'bundle:install', 'deploy:migrate'
