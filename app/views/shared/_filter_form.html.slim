@@ -17,7 +17,7 @@
         .span3
           label
             'User:
-          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :name, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
+          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :email, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
       .span1
         label
           'Payable:
@@ -41,4 +41,4 @@
             li
               = link_to "XLS Simple" , download_statistics_path(format: :xls), data: {type: 'simple'}
             li
-              = link_to "XLS Advansed" , download_statistics_path(format: :xls), data: {type: 'advansed'}
+              = link_to "XLS Advanced" , download_statistics_path(format: :xls), data: {type: 'advanced'}

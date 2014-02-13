@@ -31,15 +31,16 @@ class StatisticsFilter
       end
       te
     end
+
     def by_user(te)
-      if @user_id.present?
+      if @user_id.present? & @user_id.blank?
         te = te.where(user_id: @user_id)
       end
       te
     end
 
     def by_project(te)
-      if @params[:project_ids].present?
+      if @params[:project_ids].present? & @params[:project_ids].blank?
         te = te.where(project_id: @params[:project_ids])
       end
       te

@@ -1,6 +1,6 @@
 class XlsReport
   TYPES = {
-    simple:           {columns: [:name, :time_points, :url], width: [40, 9, 30]},
+    simple:           {columns: [:name, :real_time, :description,  :date], width: [40, 9, 50, 15]},
     advanced:         {columns: [:name, :project_name, :real_time, :time_points, :url , :date, :user_mail, :description], width:[40, 20, 9, 9, 30, 15, 20, 50]}
     }.with_indifferent_access
 
