@@ -35,7 +35,7 @@ class TimeEntriesController < InheritedResources::Base
     params[:time_entry][:real_time] = pretty_time(params[:time_entry][:real_time])
     if can?(:manage,:time_entries) || can?(:read, :time_entries)
       @time_entry=TimeEntry.find(params[:id])
-      if @time_entry.update_attributes(params[:time_entry])
+      if @time_entry.update_attributes(params.require(:time_entry).permit(:description, :name, :project, :real_time, :status, :time_points, :date , :project_id, :url, :payable, :evaluation, :is_visible_for_customer))
         redirect_to @time_entry
       else
         #render action: "edit"
