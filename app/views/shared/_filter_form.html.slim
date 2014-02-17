@@ -1,4 +1,4 @@
-.well
+7.well
   = form_tag "/statistics", method: :get, class: "statistic_fields" do
     .row-fluid
       .span2
@@ -17,7 +17,7 @@
         .span3
           label
             'User:
-          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :email, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
+          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :name, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
       .span1
         label
           'Payable:
