@@ -35,7 +35,14 @@ table class="table" id="time_entries"
         - unless current_user.customer?
           td = te.real_time
         - if current_user.admin? || current_user.customer?
-          td = te.time_points
+          td
+            = form_tag "/statistics/#{te.id}", class:'mainbox' do
+              = link_to '', class: "edit_link" do
+                = image_tag 'deliverededit.gif'
+              .text_wrapper = te.time_points
+              .edit style='display: none; '
+                textarea.editbox name='time_points'
+              input name='id' type='hidden' id='id' value=te.id
         td = te.status
         td = te.date
         td = te.payable

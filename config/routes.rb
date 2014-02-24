@@ -13,7 +13,7 @@ TimeTrack::Application.routes.draw do
 
   root :to => 'dashboard#show'
 
-  resources :statistics, only: [:index] do
+  resources :statistics, only: [:index, :update] do
     get :download , on: :collection
   end
 
