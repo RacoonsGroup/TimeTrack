@@ -1,7 +1,6 @@
 - unless current_user.customer?
-  =content_for :sidebar do
-    =render "/shared/statistics"
-
+  = content_for :sidebar do
+    = render "/shared/statistics"
 = render "/shared/filter_form"
 
 / Will be permanently removed in latest versions
@@ -13,6 +12,7 @@ table class="table" id="time_entries"
   thead
     tr
       th Task name
+      th URL
       th Project name
       - unless current_user.customer?
         th Real time (#{@presenter.real_time})
@@ -30,6 +30,7 @@ table class="table" id="time_entries"
     - @presenter.time_entries.each do |te|
       tr
         td = link_to te.name, time_entry_path(te)
+        td = link_to 'url', te.url, target: '_blank'
         td = te.project_name
         - unless current_user.customer?
           td = te.real_time
