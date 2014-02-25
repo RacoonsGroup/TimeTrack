@@ -4,9 +4,9 @@ $(document).ready(function()
 //Edit link action
     $('.edit_link').click(function()
     {
-        var mainbox = $(this).closest('.mainbox');
+        var mainbox = $(this).closest('.mainbox').find('form');
         mainbox.find('.text_wrapper').hide();
-        var data=$(this).closest('.mainbox').find('.text_wrapper').text();
+        var data=mainbox.find('.text_wrapper').text();
         mainbox.find('.edit').show();
         mainbox.find('.editbox').text(data);
         mainbox.find('.editbox').focus();
@@ -22,7 +22,7 @@ $(document).ready(function()
 //Textarea content editing
     $(".editbox").change(function(event)
     {
-        var mainbox = $(this).closest('.mainbox');
+        var mainbox = $(this).closest('.mainbox').find('form');
         event.preventDefault();
         mainbox.find('.edit').hide();
         var boxval = mainbox.find(".editbox").val();
@@ -30,7 +30,7 @@ $(document).ready(function()
         var data = mainbox.serialize();
         $.ajax({
             type: "PUT",
-            url: "/statistics/" + id,
+            url: "/edit_time/" + id,
             data: data,
             cache: false,
             success: function() {
@@ -45,9 +45,9 @@ $(document).ready(function()
     });
 
 //Textarea without editing.
-    $(document).mouseup(function()
+    $(".editbox").focusout(function()
     {
-        var mainbox = $(this).closest('.mainbox');
+        var mainbox = $(this).closest('.mainbox').find('form');
         mainbox.find('.edit').hide();
         mainbox.find('.text_wrapper').show();
         return false;

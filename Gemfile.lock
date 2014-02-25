@@ -348,6 +348,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemodel
   autotest-rails
   cancan
   capistrano (= 2.15.5)

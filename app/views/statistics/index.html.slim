@@ -36,13 +36,14 @@ table class="table" id="time_entries"
           td = te.real_time
         - if current_user.admin? || current_user.customer?
           td
-            = form_tag "/statistics/#{te.id}", class:'mainbox' do
-              = link_to '', class: "edit_link" do
-                = image_tag 'deliverededit.gif'
-              .text_wrapper = te.time_points
-              .edit style='display: none; '
-                textarea.editbox name='time_points'
-              input name='id' type='hidden' id='id' value=te.id
+            .mainbox
+              = simple_form_for @edit_time, url: '' do |f|
+                = link_to '#', class: "edit_link" do
+                  i.icon-pencil
+                .text_wrapper = te.time_points
+                .edit style='display: none; '
+                  = f.input_field :time_points, class: 'editbox', as: 'text'
+                = f.input_field :id, as:'hidden', id:'id', value:te.id
         td = te.status
         td = te.date
         td = te.payable

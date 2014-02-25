@@ -11,13 +11,10 @@ class StatisticsController < ApplicationController
 
     # Will be removed in latest versions
     #@month_hours = TimeEntry.month_hours
+    @edit_time = EditTime.new
   end
 
-  def update
-    time_entry = TimeEntry.find(params[:id])
-    time_entry.update(time_points: params[:time_points])
-    render nothing:true
-  end
+
 
   def download
     filename = "report-#{params[:from_date]||Date.today}-#{params[:to_date]}.#{params[:format]}"

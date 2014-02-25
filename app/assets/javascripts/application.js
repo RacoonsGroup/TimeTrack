@@ -13,3 +13,4 @@
 //= require jquery.ui.all
 //= require cookie.jquery
 //= require chosen.jquery.min
+//= require delivered.edit

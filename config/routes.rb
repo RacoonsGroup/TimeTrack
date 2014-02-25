@@ -13,14 +13,14 @@ TimeTrack::Application.routes.draw do
 
   root :to => 'dashboard#show'
 
-  resources :statistics, only: [:index, :update] do
+  resources :statistics, only: [:index] do
     get :download , on: :collection
   end
-
   namespace :api do
     resources :time_entries
     resources :articles
     resources :projects, only: [:index]
   end
 
+  resources :edit_time, only: [:update], :as => 'edit_time'
 end

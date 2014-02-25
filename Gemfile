@@ -30,6 +30,9 @@ gem 'faker'
 gem 'to_xls-rails'
 gem 'unicorn'
 
+gem "activemodel"
+gem "simple_form"
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
