@@ -8,9 +8,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require bootstrap
-//= require common
 //= require jquery.ui.all
-//= require cookie.jquery
-//= require chosen.jquery.min
-//= require delivered.edit
+//= require_tree .

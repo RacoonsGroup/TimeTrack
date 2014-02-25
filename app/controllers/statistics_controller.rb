@@ -11,7 +11,7 @@ class StatisticsController < ApplicationController
 
     # Will be removed in latest versions
     #@month_hours = TimeEntry.month_hours
-    @edit_time = EditTime.new
+    @time_points_form = TimePointsForm.new
   end
 
 

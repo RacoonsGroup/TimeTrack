@@ -37,7 +37,7 @@ table class="table" id="time_entries"
         - if current_user.admin? || current_user.customer?
           td
             .mainbox
-              = simple_form_for @edit_time, url: '' do |f|
+              = simple_form_for @time_points_form, url: '' do |f|
                 = link_to '#', class: "edit_link" do
                   i.icon-pencil
                 .text_wrapper = te.time_points

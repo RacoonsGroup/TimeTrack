@@ -13,12 +13,6 @@ $(document).ready(function()
         return false;
     });
 
-//Mouseup textarea false
-    $(".editbox").mouseup(function()
-    {
-        return false
-    });
-
 //Textarea content editing
     $(".editbox").change(function(event)
     {
@@ -30,7 +24,7 @@ $(document).ready(function()
         var data = mainbox.serialize();
         $.ajax({
             type: "PUT",
-            url: "/edit_time/" + id,
+            url: "/time_points/" + id,
             data: data,
             cache: false,
             success: function() {
