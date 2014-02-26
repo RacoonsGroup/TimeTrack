@@ -16,11 +16,11 @@ TimeTrack::Application.routes.draw do
   resources :statistics, only: [:index] do
     get :download , on: :collection
   end
-
   namespace :api do
     resources :time_entries
     resources :articles
     resources :projects, only: [:index]
   end
 
+  resources :time_points, only: [:update], :as => 'time_points'
 end

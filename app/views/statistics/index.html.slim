@@ -35,7 +35,15 @@ table class="table" id="time_entries"
         - unless current_user.customer?
           td = te.real_time
         - if current_user.admin? || current_user.customer?
-          td = te.time_points
+          td
+            .mainbox
+              = simple_form_for @time_points_form, url: '' do |f|
+                = link_to '#', class: "edit_link" do
+                  i.icon-pencil
+                .text_wrapper = te.time_points
+                .edit style='display: none; '
+                  = f.input_field :time_points, class: 'editbox', as: 'text'
+                = f.input_field :id, as:'hidden', id:'id', value:te.id
         td = te.status
         td = te.date
         td = te.payable

@@ -13,18 +13,21 @@
 
 ActiveRecord::Schema.define(version: 20131219161333) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: true do |t|
     t.string   "title"
     t.string   "short_description"
     t.integer  "importance"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "url"
   end
 
-  add_index "articles", ["short_description"], name: "index_articles_on_short_description"
-  add_index "articles", ["title"], name: "index_articles_on_title"
-  add_index "articles", ["url"], name: "index_articles_on_url"
+  add_index "articles", ["short_description"], name: "index_articles_on_short_description", using: :btree
+  add_index "articles", ["title"], name: "index_articles_on_title", using: :btree
+  add_index "articles", ["url"], name: "index_articles_on_url", using: :btree
 
   create_table "articles_users", force: true do |t|
     t.integer "article_id"
@@ -36,15 +39,15 @@ ActiveRecord::Schema.define(version: 20131219161333) do
     t.datetime "end_date"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|
     t.string   "project_name"
     t.string   "project_description"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "disable"
     t.string   "payment_type"
   end
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 20131219161333) do
   create_table "qualifications", force: true do |t|
     t.string   "name"
     t.float    "base_wage"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rails_admin_histories", force: true do |t|
@@ -62,12 +65,12 @@ ActiveRecord::Schema.define(version: 20131219161333) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      limit: 2
-    t.integer  "year",       limit: 5
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "year",       limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "time_entries", force: true do |t|
     t.integer  "user_id"
@@ -77,8 +80,8 @@ ActiveRecord::Schema.define(version: 20131219161333) do
     t.float    "time_points"
     t.string   "status"
     t.text     "description"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.date     "date"
     t.integer  "project_id"
     t.string   "url"
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20131219161333) do
     t.boolean  "is_visible_for_customer", default: false
   end
 
-  add_index "time_entries", ["user_id"], name: "index_tasks_on_user_id"
+  add_index "time_entries", ["user_id"], name: "index_time_entries_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -100,8 +103,8 @@ ActiveRecord::Schema.define(version: 20131219161333) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "role"
     t.integer  "qualification_id"
     t.string   "name"
@@ -109,7 +112,7 @@ ActiveRecord::Schema.define(version: 20131219161333) do
     t.integer  "project_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

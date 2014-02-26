@@ -11,7 +11,10 @@ class StatisticsController < ApplicationController
 
     # Will be removed in latest versions
     #@month_hours = TimeEntry.month_hours
+    @time_points_form = TimePointsForm.new
   end
+
+
 
   def download
     filename = "report-#{params[:from_date]||Date.today}-#{params[:to_date]}.#{params[:format]}"
