@@ -17,11 +17,11 @@
         .span3
           label
             'User:
-          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :name, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent'
+          =' select_tag :user_id, options_from_collection_for_select(@presenter.users, :id, :name, selected: @presenter.selected_user), include_blank: true, class: 'input-100-percent multiselect', multiple: true
       .span1
         label
           'Payable:
-        =' select_tag :payable, options_for_select(@presenter.payable, selected:@presenter.selected_payable), include_blank:true, class: 'input-100-percent'
+        =' select_tag :payable, options_for_select(@presenter.payable, selected:@presenter.selected_payable), include_blank:true, class: 'input-100-percent multiselect', multiple: true
       .span1.button_padding
         = submit_tag 'Filter', class: 'btn'
 
