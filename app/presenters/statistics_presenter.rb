@@ -27,15 +27,15 @@ class StatisticsPresenter
     
     payment_statatistics=[{ payment_type: :internal, 
                             real_time: internal_tasks.sum(:real_time), 
-                            delivred_time: internal_tasks.sum(:time_points), 
+                            delivred_time: internal_tasks.sum(:time_points),
                             rate: (internal_tasks.sum(:time_points)/internal_tasks.sum(:real_time)).round(2)},
                           { payment_type: :point, 
                             real_time: point_tasks.sum(:real_time), 
-                            delivred_time: point_tasks.sum(:time_points), 
+                            delivred_time: point_tasks.sum(:time_points),
                             rate: (point_tasks.sum(:time_points)/point_tasks.sum(:real_time)).round(2)},
                           { payment_type: :level, 
                             real_time: level_tasks.sum(:real_time), 
-                            delivred_time: level_tasks.sum(:time_points), 
+                            delivred_time: level_tasks.sum(:time_points),
                             rate: (level_tasks.sum(:time_points)/level_tasks.sum(:real_time)).round(2)}]
     payment_statatistics
   end

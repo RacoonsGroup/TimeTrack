@@ -20,16 +20,37 @@ $(document).ready(function()
         event.preventDefault();
         mainbox.find('.edit').hide();
         var boxval = mainbox.find(".editbox").val();
-        var id = mainbox.find("#id").val();
+        var id = mainbox.find("#time_entry_id").val();
         var data = mainbox.serialize();
         $.ajax({
             type: "PUT",
-            url: "/time_points/" + id,
+            url: "/time_entry_part/" + id,
             data: data,
             cache: false,
             success: function() {
                 mainbox.find('.text_wrapper').text(boxval);
                 mainbox.find('.text_wrapper').show();
+            },
+            error:  function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+        return false;
+    });
+
+    $(".payable").change(function(event)
+    {
+        console.log("ok")
+        var mainbox = $(this).closest('.mainbox').find('form');
+        event.preventDefault();
+        var id = mainbox.find("#time_entry_id").val();
+        var data = mainbox.serialize();
+        $.ajax({
+            type: "PUT",
+            url: "/time_entry_part/" + id,
+            data: data,
+            cache: false,
+            success: function() {
             },
             error:  function(xhr, str){
                 alert('Возникла ошибка: ' + xhr.responseCode);

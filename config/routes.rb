@@ -22,5 +22,5 @@ TimeTrack::Application.routes.draw do
     resources :projects, only: [:index]
   end
 
-  resources :time_points, only: [:update], :as => 'time_points'
+  resources :time_entry_part, only: [:update], :as => 'time_entry_part'
 end

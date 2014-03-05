@@ -70,7 +70,7 @@ RailsAdmin.config do |config|
   #     configure :project, :string 
   #     configure :name, :string 
   #     configure :real_time, :float 
-  #     configure :time_points, :float 
+  #     configure :time_points, :float
   #     configure :status, :string 
   #     configure :description, :text 
   #     configure :created_at, :datetime 
