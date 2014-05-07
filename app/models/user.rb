@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :qualification
   has_many :time_entries
-  has_and_belongs_to_many :articles  
+  has_and_belongs_to_many :articles
 
   ROLE = %w(user admin)
 
@@ -37,4 +37,16 @@ class User < ActiveRecord::Base
     articles.where(id: article.id).any?
   end
 
+  # Devise's methods for approve proccess
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super
+    end
+  end
 end
