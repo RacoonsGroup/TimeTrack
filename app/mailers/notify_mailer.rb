@@ -5,7 +5,7 @@ class NotifyMailer < ActionMailer::Base
 
   def new_notify notify
     @notify = notify
-    recipients = User.all.collect(&:email).join(',')
+    recipients = User.approved.collect(&:email).join(',')
     mail(to: recipients, subject: "Добавлена оповещалка")
   end
 

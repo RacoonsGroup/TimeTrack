@@ -14,7 +14,7 @@ class StatisticsCustomerPresenter < StatisticsPresenter
   end
 
   def users
-    users = User.all
+    users = User.approved
     users.unshift(User.new(email: "all"))
   end
 

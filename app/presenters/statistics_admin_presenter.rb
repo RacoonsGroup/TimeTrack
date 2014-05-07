@@ -1,5 +1,5 @@
 class StatisticsAdminPresenter < StatisticsPresenter
-  
+
   def initialize(params)
     @params = params
 
@@ -11,7 +11,7 @@ class StatisticsAdminPresenter < StatisticsPresenter
   end
 
   def users
-    users = User.all
+    users = User.approved
     users.unshift(User.new(email: "all"))
   end
 end

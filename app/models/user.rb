@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :time_entries
   has_and_belongs_to_many :articles
 
+  scope :approved, -> { where(approved: true) }
+
   ROLE = %w(user admin)
 
   before_create :set_default_user_role

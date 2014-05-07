@@ -6,7 +6,7 @@ class ArticleMailer < ActionMailer::Base
   def new_article user, article
     @user = user
     @article = article
-    recipients = User.all.collect(&:email).join(',')
+    recipients = User.approved.collect(&:email).join(',')
     mail(to: recipients, subject: "Добавлена статья")
   end
 
