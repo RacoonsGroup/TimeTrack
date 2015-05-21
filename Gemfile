@@ -10,7 +10,6 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'twitter-bootstrap-rails', '2.0.7'
-gem 'simple_form'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'will_paginate'
@@ -46,7 +45,7 @@ group :development do
   gem 'letter_opener'
   gem 'debugger'
   gem 'capistrano', '2.15.5'
-  gem 'rvm-capistrano'
+  gem 'rvm-capistrano', require: false
   gem 'capistrano-unicorn'
   gem 'sqlite3'
 end
